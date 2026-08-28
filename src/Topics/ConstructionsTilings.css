@@ -1,0 +1,16 @@
+.constructions-topic{min-height:100vh;background:linear-gradient(135deg,#fefce8,#eff6ff);padding:30px 20px 60px;font-family:Arial,sans-serif}
+.constructions-back{background:#ca8a04;color:white;border:0;padding:12px 22px;border-radius:12px;font-weight:bold}
+.constructions-content{max-width:950px;margin:auto;text-align:center}
+.constructions-icon{font-size:60px}.constructions-label{color:#ca8a04;font-weight:bold;letter-spacing:2px}
+.constructions-content h1{font-size:42px;color:#713f12}.constructions-intro{font-size:18px;color:#555}
+.constructions-section{background:white;border-radius:20px;padding:28px;margin:22px 0;box-shadow:0 8px 25px #0001;text-align:left}
+.constructions-section h2{color:#a16207}.constructions-section p{font-size:17px;line-height:1.7;color:#555}
+.constructions-highlight,.construction-example,.circle-construction,.angle-construction{background:#fefce8;padding:20px;border-radius:15px;text-align:center;font-size:22px;margin:15px 0}
+.construction-cards,.tiling-cards{display:flex;gap:15px;flex-wrap:wrap}
+.construction-card,.tiling-card{flex:1;min-width:180px;background:#fffbeb;padding:20px;border-radius:16px;text-align:center}
+.construction-steps div{padding:12px;background:#f8fafc;margin:8px 0;border-radius:10px}
+.tiling-visual{text-align:center;font-size:35px;line-height:1.5}
+.construction-story{text-align:center}
+.challenge{text-align:center;background:#fefce8}
+.constructions-question{text-align:center;font-weight:bold}
+@media(max-width:700px){.constructions-content h1{font-size:30px}.construction-cards,.tiling-cards{display:block}.construction-card,.tiling-card{margin:10px 0}}

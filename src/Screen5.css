@@ -1,0 +1,332 @@
+.screen5 {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #fff7ed, #fef3c7, #fce7f3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+
+/* BACK BUTTON */
+
+.screen5-back {
+  position: absolute;
+  top: 25px;
+  left: 30px;
+
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+
+  background: white;
+  color: #374151;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+
+  transition: 0.25s ease;
+}
+
+.screen5-back:hover {
+  transform: translateX(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+
+/* MAIN CONTENT */
+
+.screen5-content {
+  width: 90%;
+  max-width: 1150px;
+
+  text-align: center;
+
+  padding: 45px 20px;
+}
+
+
+/* TROPHY */
+
+.compete-icon {
+  font-size: 55px;
+
+  margin-bottom: 5px;
+
+  animation: trophyFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes trophyFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+/* LABEL */
+
+.compete-label {
+  margin: 5px 0 10px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: #f97316;
+}
+
+
+/* TITLE */
+
+.screen5-content h1 {
+  margin: 0;
+
+  font-size: 48px;
+  font-weight: 900;
+
+  letter-spacing: 2px;
+
+  color: #111827;
+}
+
+
+/* INTRO */
+
+.compete-intro {
+  margin: 10px 0 35px;
+
+  font-size: 17px;
+
+  color: #4b5563;
+}
+
+
+/* CARDS CONTAINER */
+
+.competition-cards {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+
+  margin-top: 20px;
+}
+
+
+/* CARD */
+
+.competition-card {
+  background: rgba(255, 255, 255, 0.9);
+
+  border-radius: 25px;
+
+  padding: 30px 25px;
+
+  min-height: 290px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.10);
+
+  border: 2px solid rgba(255, 255, 255, 0.8);
+
+  transition: all 0.3s ease;
+}
+
+
+/* CARD HOVER */
+
+.competition-card:hover {
+  transform: translateY(-10px) scale(1.02);
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.16);
+}
+
+
+/* CARD ICON */
+
+.competition-card-icon {
+  font-size: 48px;
+
+  margin-bottom: 12px;
+}
+
+
+/* CARD TITLE */
+
+.competition-card h2 {
+  margin: 5px 0 10px;
+
+  font-size: 22px;
+  font-weight: 800;
+
+  color: #1f2937;
+}
+
+
+/* CARD DESCRIPTION */
+
+.competition-card p {
+  max-width: 260px;
+
+  margin: 0 auto 22px;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  color: #6b7280;
+}
+
+
+/* CARD BUTTON */
+
+.competition-button {
+  border: none;
+
+  padding: 12px 25px;
+
+  border-radius: 25px;
+
+  background: #111827;
+  color: white;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.competition-button:hover {
+  transform: translateY(-3px);
+
+  background: #f97316;
+
+  box-shadow:
+    0 8px 18px rgba(249, 115, 22, 0.3);
+}
+
+
+/* BOTTOM NOTE */
+
+.battle-note {
+  margin: 35px auto 0;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  width: fit-content;
+
+  padding: 12px 22px;
+
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.75);
+
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+.battle-note span {
+  font-size: 22px;
+}
+
+.battle-note p {
+  margin: 0;
+
+  font-size: 14px;
+
+  color: #4b5563;
+}
+
+.battle-note strong {
+  color: #f97316;
+}
+
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+  .competition-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .screen5-content h1 {
+    font-size: 40px;
+  }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .screen5 {
+    align-items: flex-start;
+
+    overflow-y: auto;
+  }
+
+  .screen5-content {
+    padding-top: 90px;
+    padding-bottom: 40px;
+  }
+
+  .screen5-content h1 {
+    font-size: 32px;
+  }
+
+  .compete-intro {
+    font-size: 15px;
+  }
+
+  .competition-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .competition-card {
+    min-height: 260px;
+  }
+
+  .battle-note {
+    max-width: 90%;
+  }
+
+  .battle-note p {
+    font-size: 13px;
+  }
+
+  .screen5-back {
+    top: 18px;
+    left: 18px;
+  }
+}

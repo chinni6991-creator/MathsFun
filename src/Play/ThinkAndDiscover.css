@@ -1,0 +1,244 @@
+.think-discover {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f4f0ff, #eefaff);
+  padding: 30px 50px 60px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.think-back {
+  border: none;
+  background: white;
+  color: #333;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: 0.2s ease;
+}
+
+.think-back:hover {
+  transform: translateY(-2px);
+}
+
+.think-content {
+  max-width: 900px;
+  margin: 35px auto 0;
+  text-align: center;
+}
+
+.think-icon {
+  font-size: 60px;
+  margin-bottom: 5px;
+}
+
+.think-label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #7456d8;
+}
+
+.think-content h1 {
+  margin: 8px 0;
+  font-size: 46px;
+  font-weight: 900;
+  color: #29243b;
+}
+
+.think-intro {
+  margin: 0 0 25px;
+  font-size: 18px;
+  color: #696579;
+}
+
+
+/* SCORE */
+
+.think-score {
+  display: inline-block;
+  background: white;
+  padding: 12px 25px;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 800;
+  color: #6a50c9;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  margin-bottom: 25px;
+}
+
+
+/* PUZZLE CARD */
+
+.think-card {
+  background: white;
+  border-radius: 28px;
+  padding: 45px 35px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.09);
+}
+
+.pattern-label {
+  margin: 0 0 25px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #9993a7;
+}
+
+
+/* NUMBER PATTERN */
+
+.number-pattern {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.number-pattern span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 30px;
+  font-weight: 900;
+  color: #302b43;
+}
+
+.number-pattern b {
+  font-size: 20px;
+  color: #aaa4b5;
+}
+
+.number-pattern .question-mark {
+  background: #eeeaff;
+  color: #7456d8;
+  padding: 8px 20px;
+  border-radius: 14px;
+  font-size: 34px;
+}
+
+
+/* QUESTION */
+
+.think-question {
+  font-size: 18px;
+  font-weight: 700;
+  color: #666174;
+  margin-bottom: 28px;
+}
+
+
+/* OPTIONS */
+
+.think-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.think-options button {
+  border: 2px solid #e3ddf5;
+  background: #faf9ff;
+  color: #302b43;
+  padding: 18px;
+  border-radius: 16px;
+  font-size: 22px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.think-options button:hover {
+  transform: translateY(-3px);
+  border-color: #7456d8;
+  background: #f1edff;
+}
+
+.think-options button.think-correct {
+  background: #dff8e8;
+  border-color: #35b96f;
+  color: #19864c;
+}
+
+.think-options button.think-wrong {
+  background: #ffe4e4;
+  border-color: #ef6262;
+  color: #c73737;
+}
+
+
+/* FEEDBACK */
+
+.think-feedback {
+  margin-top: 28px;
+}
+
+.think-feedback p {
+  font-size: 18px;
+  font-weight: 700;
+  color: #4e485c;
+}
+
+.next-puzzle {
+  border: none;
+  background: #7456d8;
+  color: white;
+  padding: 14px 25px;
+  border-radius: 13px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: 0.2s ease;
+}
+
+.next-puzzle:hover {
+  transform: translateY(-2px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+  .think-discover {
+    padding: 25px 18px 45px;
+  }
+
+  .think-content h1 {
+    font-size: 36px;
+  }
+
+  .think-intro {
+    font-size: 16px;
+  }
+
+  .think-card {
+    padding: 35px 20px;
+  }
+
+  .number-pattern span {
+    font-size: 23px;
+  }
+
+  .number-pattern b {
+    font-size: 16px;
+  }
+
+  .number-pattern .question-mark {
+    font-size: 28px;
+    padding: 6px 15px;
+  }
+
+  .think-options {
+    grid-template-columns: 1fr;
+  }
+
+}

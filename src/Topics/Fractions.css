@@ -1,0 +1,14 @@
+.fractions-topic{min-height:100vh;background:linear-gradient(135deg,#fff1f2,#fdf4ff);padding:30px 20px 60px;font-family:Arial,sans-serif}
+.fractions-back{background:#db2777;color:white;border:0;padding:12px 22px;border-radius:12px;font-weight:bold}
+.fractions-content{max-width:950px;margin:auto;text-align:center}
+.fractions-icon{font-size:60px}.fractions-label{color:#db2777;font-weight:bold;letter-spacing:2px}
+.fractions-content h1{font-size:42px;color:#831843}.fractions-intro{font-size:18px;color:#555}
+.fractions-section{background:white;border-radius:20px;padding:28px;margin:22px 0;box-shadow:0 8px 25px #0001;text-align:left}
+.fractions-section h2{color:#be185d}.fractions-section p{font-size:17px;line-height:1.7;color:#555}
+.fraction-example,.fractions-highlight{background:#fff1f2;padding:20px;border-radius:15px;text-align:center;font-size:25px;margin:15px 0}
+.fraction-cards{display:flex;gap:15px;flex-wrap:wrap}
+.fraction-card{flex:1;min-width:190px;background:#fdf2f8;padding:20px;border-radius:16px;text-align:center}
+.fraction-card h3{color:#db2777}
+.challenge{text-align:center;background:#fefce8}
+.fractions-question{text-align:center;font-weight:bold}
+@media(max-width:700px){.fractions-content h1{font-size:30px}.fraction-cards{display:block}.fraction-card{margin:10px 0}}

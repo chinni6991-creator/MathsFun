@@ -1,0 +1,153 @@
+.join-battle {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef2ff, #fdf4ff);
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.join-back {
+  border: none;
+  background: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.join-content {
+  max-width: 600px;
+  margin: 60px auto;
+  text-align: center;
+}
+
+.join-icon {
+  font-size: 70px;
+  margin-bottom: 10px;
+}
+
+.join-label {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #6366f1;
+}
+
+.join-content h1 {
+  font-size: 42px;
+  margin: 10px 0;
+  font-weight: 900;
+}
+
+.join-intro {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 35px;
+}
+
+.join-card {
+  background: white;
+  padding: 35px;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.join-code-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: #f5f3ff;
+  padding: 20px;
+  border-radius: 18px;
+  margin-bottom: 30px;
+}
+
+.join-code-section span {
+  font-size: 35px;
+}
+
+.join-code-section div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.join-code-section small {
+  font-size: 12px;
+  font-weight: 800;
+  color: #777;
+  letter-spacing: 1px;
+}
+
+.join-code-section strong {
+  font-size: 32px;
+  letter-spacing: 5px;
+  color: #4f46e5;
+}
+
+.join-input-section {
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.join-input-section label {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.join-input-section input {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 14px;
+  font-size: 17px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.join-input-section input:focus {
+  border-color: #6366f1;
+}
+
+.join-button {
+  width: 100%;
+  padding: 17px;
+  border: none;
+  border-radius: 15px;
+  background: #6366f1;
+  color: white;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.join-button:hover {
+  transform: translateY(-2px);
+}
+
+.join-info {
+  margin-top: 25px;
+  background: white;
+  padding: 18px 22px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.join-info span {
+  font-size: 25px;
+}
+
+.join-info p {
+  margin: 0;
+  color: #555;
+  line-height: 1.5;
+}

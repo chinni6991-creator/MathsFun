@@ -1,0 +1,206 @@
+* {
+  box-sizing: border-box;
+}
+
+.screen6 {
+  width: 100%;
+  min-height: 100vh;
+
+  position: relative;
+
+  padding: 100px 30px 60px;
+
+  color: white;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(70, 140, 255, 0.30),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(180, 80, 255, 0.25),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #070a20,
+      #111744,
+      #210d3d
+    );
+}
+
+.screen6-back {
+  position: fixed;
+
+  top: 25px;
+  left: 25px;
+
+  z-index: 100;
+
+  padding: 12px 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(12px);
+
+  transition: all 0.3s ease;
+}
+
+.screen6-back:hover {
+  transform: translateX(-5px);
+
+  background: rgba(255, 255, 255, 0.16);
+
+  box-shadow:
+    0 10px 30px rgba(80, 120, 255, 0.30);
+}
+
+.screen6-content {
+  width: 100%;
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.screen6-icon {
+  font-size: 65px;
+
+  margin-bottom: 15px;
+}
+
+.screen6-content h1 {
+  margin: 0;
+
+  font-size: clamp(38px, 6vw, 68px);
+
+  line-height: 1.15;
+
+  font-weight: 800;
+
+  overflow-wrap: anywhere;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #8fd3ff,
+    #d49cff,
+    #ffffff
+  );
+
+  background-size: 250% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  animation: screen6Title 5s linear infinite;
+}
+
+@keyframes screen6Title {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 250% center;
+  }
+}
+
+.screen6-subtitle {
+  margin: 15px 0 40px;
+
+  font-size: 19px;
+
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.concept-box {
+  width: 100%;
+
+  padding: 45px 35px;
+
+  border-radius: 25px;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(15px);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.20);
+}
+
+.concept-box h2 {
+  margin: 0 0 20px;
+
+  font-size: 30px;
+}
+
+.concept-box p {
+  margin: 0;
+
+  font-size: 18px;
+
+  line-height: 1.7;
+
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.concept-box strong {
+  color: white;
+}
+
+@media (max-width: 650px) {
+
+  .screen6 {
+    padding: 90px 18px 40px;
+  }
+
+  .screen6-back {
+    top: 18px;
+    left: 18px;
+
+    padding: 9px 16px;
+
+    font-size: 14px;
+  }
+
+  .screen6-icon {
+    font-size: 50px;
+  }
+
+  .screen6-subtitle {
+    font-size: 16px;
+  }
+
+  .concept-box {
+    padding: 30px 20px;
+  }
+
+  .concept-box h2 {
+    font-size: 25px;
+  }
+
+  .concept-box p {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,168 @@
+.screen4 {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7ff, #eef9ff);
+  padding: 30px 50px 60px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.back-button {
+  border: none;
+  background: white;
+  color: #333;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: 0.2s ease;
+}
+
+.back-button:hover {
+  transform: translateY(-2px);
+}
+
+.screen4-content {
+  max-width: 1200px;
+  margin: 35px auto 0;
+  text-align: center;
+}
+
+.play-icon {
+  font-size: 58px;
+  margin-bottom: 5px;
+}
+
+.play-label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #6c63ff;
+}
+
+.screen4-content h1 {
+  margin: 8px 0;
+  font-size: 52px;
+  font-weight: 900;
+  color: #20243a;
+}
+
+.play-intro {
+  margin: 0 auto 40px;
+  font-size: 19px;
+  color: #656b7d;
+}
+
+
+/* PLAY CARDS */
+
+.play-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  text-align: left;
+}
+
+.play-card {
+  background: white;
+  border-radius: 24px;
+  padding: 30px;
+  min-height: 250px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 2px solid transparent;
+}
+
+.play-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+}
+
+.play-card:nth-child(1) {
+  border-color: #dcd9ff;
+}
+
+.play-card:nth-child(2) {
+  border-color: #ffe2b8;
+}
+
+.play-card:nth-child(3) {
+  border-color: #ccefdc;
+}
+
+.play-card:nth-child(4) {
+  border-color: #ffd5e4;
+}
+
+.play-card-icon {
+  font-size: 45px;
+  margin-bottom: 12px;
+}
+
+.play-card h2 {
+  margin: 0 0 10px;
+  font-size: 25px;
+  color: #25283d;
+}
+
+.play-card p {
+  margin: 0 0 22px;
+  color: #6a6f80;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 450px;
+}
+
+.play-card-button {
+  border: none;
+  background: #6c63ff;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.play-card-button:hover {
+  transform: translateX(4px);
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+
+  .screen4 {
+    padding: 25px 20px 45px;
+  }
+
+  .screen4-content h1 {
+    font-size: 42px;
+  }
+
+  .play-cards {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 450px) {
+
+  .screen4-content h1 {
+    font-size: 36px;
+  }
+
+  .play-intro {
+    font-size: 16px;
+  }
+
+  .play-card {
+    padding: 24px;
+  }
+
+}

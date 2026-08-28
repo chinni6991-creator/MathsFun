@@ -1,0 +1,243 @@
+* {
+  box-sizing: border-box;
+}
+
+.addition-topic {
+  min-height: 100vh;
+  padding: 100px 25px 70px;
+  color: white;
+  background:
+    radial-gradient(circle at 50% 10%, rgba(80, 110, 230, 0.18), transparent 35%),
+    linear-gradient(135deg, #030616, #080c25, #120721);
+}
+
+.addition-back {
+  position: fixed;
+  top: 22px;
+  left: 24px;
+  z-index: 20;
+  padding: 11px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(150, 180, 255, 0.18);
+  background: rgba(25, 35, 80, 0.7);
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.addition-content {
+  width: min(1000px, 100%);
+  margin: auto;
+}
+
+.addition-icon {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  font-size: 42px;
+  background: rgba(70, 100, 210, 0.16);
+  border: 1px solid rgba(150, 185, 255, 0.2);
+}
+
+.addition-label {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #91b5ff;
+}
+
+.addition-content > h1 {
+  margin: 8px 0 15px;
+  text-align: center;
+  font-size: clamp(35px, 6vw, 60px);
+  background: linear-gradient(90deg, white, #8fd3ff, #c19cff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.addition-intro {
+  max-width: 700px;
+  margin: auto auto 45px;
+  text-align: center;
+  color: rgba(225, 230, 255, 0.65);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.addition-section {
+  margin-bottom: 28px;
+  padding: 30px;
+  border-radius: 25px;
+  background: rgba(25, 35, 75, 0.58);
+  border: 1px solid rgba(135, 165, 245, 0.13);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+.addition-section h2 {
+  margin-top: 0;
+  font-size: 27px;
+}
+
+.addition-section p {
+  color: rgba(225, 230, 255, 0.65);
+  line-height: 1.7;
+}
+
+.addition-example {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.number-box,
+.answer-box {
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.number-box {
+  background: rgba(65, 105, 210, 0.2);
+  border: 1px solid rgba(140, 180, 255, 0.25);
+  color: #a8d9ff;
+}
+
+.answer-box {
+  background: rgba(120, 80, 210, 0.25);
+  border: 1px solid rgba(190, 150, 255, 0.3);
+  color: #d6b8ff;
+}
+
+.operator {
+  font-size: 30px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.addition-rule {
+  text-align: center;
+  color: #a8d9ff !important;
+  font-weight: 700;
+}
+
+.number-line {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 30px 0;
+  padding: 20px 10px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(140, 175, 255, 0.1);
+}
+
+.number-line span {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.number-line .highlight {
+  padding: 10px 14px;
+  border-radius: 50%;
+  background: rgba(80, 130, 230, 0.3);
+  color: #a8d9ff;
+}
+
+.story-box {
+  padding: 25px;
+  text-align: center;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.story-icon {
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+.story-equation {
+  margin-top: 15px;
+  font-size: 22px;
+  color: #a8d9ff;
+}
+
+.challenge {
+  text-align: center;
+}
+
+.challenge-icon {
+  font-size: 42px;
+}
+
+.challenge-question {
+  margin: 25px 0;
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 800;
+  color: #a8d9ff;
+}
+
+.addition-answers {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.addition-answers button {
+  padding: 13px 28px;
+  border-radius: 14px;
+  border: 1px solid rgba(140, 180, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.addition-answers button:hover {
+  transform: translateY(-4px);
+  background: rgba(70, 110, 215, 0.2);
+}
+
+@media (max-width: 650px) {
+
+  .addition-topic {
+    padding: 90px 14px 50px;
+  }
+
+  .addition-back {
+    top: 15px;
+    left: 14px;
+    padding: 9px 14px;
+    font-size: 12px;
+  }
+
+  .addition-section {
+    padding: 22px 16px;
+  }
+
+  .number-box,
+  .answer-box {
+    width: 58px;
+    height: 58px;
+    font-size: 21px;
+  }
+
+  .number-line span {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,13 @@
+.everyday-topic{min-height:100vh;background:linear-gradient(135deg,#fefce8,#ecfdf5);padding:30px 20px 60px;font-family:Arial,sans-serif}
+.everyday-back{background:#16a34a;color:white;border:0;padding:12px 22px;border-radius:12px;font-weight:bold}
+.everyday-content{max-width:950px;margin:auto;text-align:center}
+.everyday-icon{font-size:60px}.everyday-label{color:#16a34a;font-weight:bold;letter-spacing:2px}
+.everyday-content h1{font-size:42px;color:#14532d}.everyday-intro{font-size:18px;color:#555}
+.everyday-section{background:white;border-radius:20px;padding:28px;margin:22px 0;box-shadow:0 8px 25px #0001;text-align:left}
+.everyday-section h2{color:#15803d}.everyday-section p{font-size:17px;line-height:1.7;color:#555}
+.everyday-example,.everyday-highlight{background:#f0fdf4;padding:20px;border-radius:15px;text-align:center;font-size:21px;margin:15px 0}
+.everyday-cards{display:flex;gap:15px;flex-wrap:wrap}.everyday-small-card{flex:1;min-width:180px;background:#f0fdf4;padding:20px;border-radius:16px;text-align:center}
+.data-visual{text-align:center;font-size:55px;padding:20px}.everyday-story,.everyday-card{text-align:center}
+.everyday-rules p{text-align:center}
+.challenge{text-align:center;background:#fefce8}.everyday-question{text-align:center;font-weight:bold}
+@media(max-width:700px){.everyday-content h1{font-size:30px}.everyday-cards{display:block}.everyday-small-card{margin:10px 0}}

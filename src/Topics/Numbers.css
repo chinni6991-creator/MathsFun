@@ -1,0 +1,2056 @@
+/* =========================================================
+   NUMBERS TOPIC — MATHSFUN
+   FULL RESPONSIVE CSS
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.numbers-topic {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding: 105px 30px 90px;
+  color: #ffffff;
+  overflow-x: hidden;
+  overflow-y: visible;
+
+  background:
+    radial-gradient(
+      circle at 50% 8%,
+      rgba(65, 90, 210, 0.16),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 5% 35%,
+      rgba(95, 45, 190, 0.11),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 95% 70%,
+      rgba(25, 120, 200, 0.08),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #030616 0%,
+      #080c25 48%,
+      #120721 100%
+    );
+}
+
+/* =========================================================
+   SUBTLE GRID
+   ========================================================= */
+
+.numbers-topic::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    );
+
+  background-size: 55px 55px;
+
+  mask-image:
+    radial-gradient(
+      circle at center,
+      black,
+      transparent 78%
+    );
+}
+
+/* =========================================================
+   FLOATING NUMBERS
+   ========================================================= */
+
+.numbers-floating {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.numbers-floating span {
+  position: absolute;
+  color: rgba(125, 160, 255, 0.055);
+  font-size: 42px;
+  font-weight: 700;
+
+  text-shadow:
+    0 0 20px rgba(80, 120, 255, 0.12);
+
+  animation:
+    numberFloat 12s ease-in-out infinite;
+}
+
+.numbers-floating span:nth-child(1) {
+  left: 7%;
+  top: 12%;
+}
+
+.numbers-floating span:nth-child(2) {
+  left: 18%;
+  top: 68%;
+  font-size: 55px;
+  animation-delay: 2s;
+}
+
+.numbers-floating span:nth-child(3) {
+  left: 84%;
+  top: 17%;
+  animation-delay: 3s;
+}
+
+.numbers-floating span:nth-child(4) {
+  left: 66%;
+  top: 10%;
+  font-size: 55px;
+  animation-delay: 1s;
+}
+
+.numbers-floating span:nth-child(5) {
+  left: 5%;
+  top: 45%;
+  animation-delay: 4s;
+}
+
+.numbers-floating span:nth-child(6) {
+  left: 88%;
+  top: 72%;
+  font-size: 48px;
+  animation-delay: 5s;
+}
+
+.numbers-floating span:nth-child(7) {
+  left: 74%;
+  top: 80%;
+  animation-delay: 6s;
+}
+
+.numbers-floating span:nth-child(8) {
+  left: 35%;
+  top: 14%;
+  animation-delay: 7s;
+}
+
+.numbers-floating span:nth-child(9) {
+  left: 50%;
+  top: 86%;
+  animation-delay: 3s;
+}
+
+.numbers-floating span:nth-child(10) {
+  left: 94%;
+  top: 42%;
+  animation-delay: 8s;
+}
+
+@keyframes numberFloat {
+  0% {
+    transform: translateY(25px) rotate(-4deg);
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translateY(-25px) rotate(5deg);
+    opacity: 0.35;
+  }
+
+  75% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(-70px) rotate(-5deg);
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.numbers-content {
+  position: relative;
+  z-index: 5;
+
+  width: min(1050px, 100%);
+  max-width: 1050px;
+
+  margin: 0 auto;
+}
+
+/* =========================================================
+   BACK BUTTON
+   ========================================================= */
+
+.numbers-back {
+  position: fixed;
+  top: 22px;
+  left: 24px;
+  z-index: 100;
+
+  padding: 11px 20px;
+  border-radius: 14px;
+
+  border: 1px solid rgba(150, 180, 255, 0.15);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(40, 55, 110, 0.55),
+      rgba(20, 25, 65, 0.45)
+    );
+
+  color: rgba(255, 255, 255, 0.9);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(15px);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.3);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.numbers-back:hover {
+  transform: translateX(-5px);
+
+  background:
+    rgba(70, 95, 180, 0.22);
+
+  border-color:
+    rgba(150, 190, 255, 0.32);
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.numbers-header {
+  position: relative;
+  text-align: center;
+
+  max-width: 900px;
+
+  margin: 0 auto 55px;
+
+  padding: 10px 15px;
+}
+
+.numbers-hero-icon {
+  width: 92px;
+  height: 92px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 26px;
+
+  font-size: 50px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(65, 105, 220, 0.15),
+      rgba(115, 55, 190, 0.12)
+    );
+
+  border:
+    1px solid rgba(150, 185, 255, 0.15);
+
+  box-shadow:
+    0 0 40px rgba(65, 105, 220, 0.18),
+    inset 0 0 25px rgba(255, 255, 255, 0.018);
+
+  backdrop-filter: blur(12px);
+
+  animation:
+    heroIconFloat 3s ease-in-out infinite;
+}
+
+@keyframes heroIconFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+.numbers-label {
+  margin: 0 0 10px;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 4px;
+
+  color:
+    rgba(145, 180, 255, 0.62);
+}
+
+.numbers-header h1 {
+  margin: 0;
+
+  font-size:
+    clamp(38px, 6vw, 62px);
+
+  line-height: 1.15;
+
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  white-space: normal;
+
+  overflow-wrap: normal;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      #8fd3ff,
+      #bda1ff,
+      #ffffff
+    );
+
+  background-size: 250% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  animation:
+    numberTitle 5s linear infinite;
+}
+
+@keyframes numberTitle {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 250% center;
+  }
+}
+
+.numbers-header > p:last-of-type {
+  max-width: 720px;
+
+  margin: 18px auto 0;
+
+  font-size: 17px;
+  line-height: 1.7;
+
+  color:
+    rgba(220, 225, 255, 0.58);
+}
+
+.scroll-hint {
+  margin-top: 28px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 5px;
+
+  color:
+    rgba(145, 175, 255, 0.42);
+
+  font-size: 12px;
+  letter-spacing: 1.5px;
+}
+
+.scroll-hint span {
+  font-size: 22px;
+
+  animation:
+    scrollArrow 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollArrow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+/* =========================================================
+   GLASS SECTIONS
+   ========================================================= */
+
+.number-section {
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0 auto 28px;
+
+  padding: 30px;
+
+  border-radius: 25px;
+
+  border:
+    1px solid rgba(135, 165, 245, 0.11);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(35, 45, 95, 0.48),
+      rgba(15, 18, 48, 0.58)
+    );
+
+  backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.28),
+    inset 0 1px rgba(255, 255, 255, 0.025);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.number-section:hover {
+  border-color:
+    rgba(125, 160, 255, 0.19);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(40, 50, 105, 0.52),
+      rgba(18, 20, 52, 0.62)
+    );
+}
+
+/* =========================================================
+   SECTION TITLES
+   ========================================================= */
+
+.section-title {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 15px;
+
+  width: 100%;
+  min-width: 0;
+
+  margin-bottom: 17px;
+}
+
+.section-title > span {
+  flex-shrink: 0;
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  background:
+    rgba(70, 100, 210, 0.12);
+
+  border:
+    1px solid rgba(125, 160, 245, 0.14);
+
+  font-size: 25px;
+}
+
+.section-title > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.section-title h2 {
+  margin: 0;
+
+  font-size:
+    clamp(23px, 3vw, 29px);
+
+  line-height: 1.3;
+
+  font-weight: 750;
+
+  white-space: normal;
+
+  overflow-wrap: break-word;
+}
+
+.section-tag {
+  margin: 5px 0 0 !important;
+
+  font-size: 10px !important;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  color:
+    rgba(125, 170, 255, 0.48) !important;
+}
+
+.number-section > p:not(.highlight-text) {
+  margin: 0;
+
+  font-size: 16px;
+
+  line-height: 1.75;
+
+  color:
+    rgba(220, 225, 255, 0.62);
+}
+
+.number-section strong {
+  color:
+    rgba(255, 255, 255, 0.95);
+}
+
+/* =========================================================
+   REAL LIFE NUMBERS
+   ========================================================= */
+
+.real-life-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 15px;
+
+  margin-top: 25px;
+}
+
+.real-life-card {
+  min-height: 145px;
+
+  padding: 20px 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  border-radius: 19px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(55, 80, 165, 0.16),
+      rgba(20, 25, 60, 0.42)
+    );
+
+  border:
+    1px solid rgba(130, 165, 245, 0.10);
+
+  transition: 0.3s ease;
+}
+
+.real-life-card:hover {
+  transform: translateY(-6px);
+
+  border-color:
+    rgba(135, 175, 255, 0.25);
+
+  box-shadow:
+    0 12px 30px rgba(50, 85, 220, 0.15);
+}
+
+.real-life-card span {
+  font-size: 31px;
+  margin-bottom: 8px;
+}
+
+.real-life-card strong {
+  font-size: 28px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      #91cfff
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.real-life-card small {
+  margin-top: 5px;
+
+  color:
+    rgba(255, 255, 255, 0.45);
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   NUMBER TYPES
+   ========================================================= */
+
+.number-types {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+
+  margin-top: 25px;
+}
+
+.number-type-card {
+  min-height: 215px;
+
+  padding: 24px 18px;
+
+  border-radius: 21px;
+
+  border:
+    1px solid rgba(130, 165, 245, 0.11);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(50, 75, 160, 0.14),
+      rgba(20, 25, 58, 0.44)
+    );
+
+  color: white;
+
+  cursor: pointer;
+
+  text-align: center;
+
+  font-family: inherit;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.number-type-card:hover {
+  transform: translateY(-7px);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(65, 95, 190, 0.22),
+      rgba(90, 45, 150, 0.12)
+    );
+
+  border-color:
+    rgba(135, 175, 255, 0.27);
+
+  box-shadow:
+    0 15px 35px rgba(55, 90, 220, 0.15);
+}
+
+.number-type-card.selected {
+  transform: translateY(-5px);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(60, 100, 205, 0.24),
+      rgba(95, 50, 165, 0.15)
+    );
+
+  border-color:
+    rgba(135, 185, 255, 0.40);
+
+  box-shadow:
+    0 0 30px rgba(70, 115, 230, 0.18);
+}
+
+.type-icon {
+  display: block;
+
+  font-size: 38px;
+
+  margin-bottom: 12px;
+}
+
+.number-type-card h3 {
+  margin: 0;
+
+  font-size: 20px;
+
+  line-height: 1.3;
+}
+
+.type-numbers {
+  margin-top: 14px;
+
+  padding: 10px 8px;
+
+  border-radius: 11px;
+
+  background:
+    rgba(0, 0, 0, 0.18);
+
+  color:
+    rgba(170, 205, 255, 0.82);
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  white-space: normal;
+
+  overflow-wrap: anywhere;
+}
+
+.tap-label {
+  display: block;
+
+  margin-top: 15px;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+  color:
+    rgba(150, 185, 255, 0.44);
+}
+
+.number-type-card.selected .tap-label {
+  color: #91cfff;
+}
+
+/* =========================================================
+   SELECTED EXPLANATION
+   ========================================================= */
+
+.selected-explanation {
+  margin-top: 20px;
+
+  padding: 18px 20px;
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(60, 100, 205, 0.14),
+      rgba(95, 50, 160, 0.08)
+    );
+
+  border:
+    1px solid rgba(120, 170, 255, 0.15);
+
+  animation:
+    explanationAppear 0.35s ease-out;
+}
+
+.selected-explanation > div {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 13px;
+}
+
+.selected-explanation > div > span {
+  font-size: 25px;
+}
+
+.selected-explanation strong {
+  font-size: 16px;
+}
+
+.selected-explanation p {
+  margin-top: 5px !important;
+
+  font-size: 14px !important;
+}
+
+@keyframes explanationAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   NUMBER LINE
+   ========================================================= */
+
+.number-line-box {
+  margin-top: 27px;
+
+  padding: 25px 20px 20px;
+
+  border-radius: 20px;
+
+  background:
+    rgba(0, 0, 0, 0.22);
+
+  border:
+    1px solid rgba(115, 150, 245, 0.07);
+
+  overflow-x: auto;
+}
+
+.number-line {
+  min-width: 680px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  position: relative;
+
+  padding: 35px 20px;
+}
+
+.number-line::before {
+  content: "";
+
+  position: absolute;
+
+  left: 3%;
+  right: 3%;
+
+  top: 50%;
+
+  height: 3px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(110, 150, 245, 0.60),
+      rgba(220, 225, 255, 0.65),
+      rgba(150, 100, 235, 0.60)
+    );
+}
+
+.number-point {
+  position: relative;
+
+  z-index: 2;
+
+  width: 53px;
+  height: 53px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(55, 85, 175, 0.28);
+
+  border:
+    2px solid rgba(140, 180, 250, 0.40);
+
+  color:
+    rgba(235, 242, 255, 0.9);
+
+  font-size: 16px;
+
+  font-weight: 750;
+
+  transition: 0.3s ease;
+}
+
+.number-point:hover {
+  transform: scale(1.18);
+
+  background:
+    rgba(75, 120, 220, 0.35);
+
+  border-color:
+    rgba(170, 210, 255, 0.75);
+
+  box-shadow:
+    0 0 25px rgba(80, 140, 240, 0.30);
+}
+
+.number-point.zero-point {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(75, 120, 220, 0.46),
+      rgba(120, 70, 210, 0.36)
+    );
+
+  border-color:
+    rgba(180, 205, 255, 0.78);
+
+  box-shadow:
+    0 0 25px rgba(95, 135, 245, 0.26);
+}
+
+.number-line-direction {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  color:
+    rgba(155, 185, 255, 0.52);
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+/* =========================================================
+   PLACE VALUE
+   ========================================================= */
+
+.big-number {
+  width: 100%;
+
+  /*
+    IMPORTANT FIX:
+    Do NOT hide the number.
+  */
+
+  max-width: 100%;
+
+  margin: 25px auto 22px;
+
+  text-align: center;
+
+  /*
+    responsive font size
+  */
+
+  font-size:
+    clamp(42px, 8vw, 70px);
+
+  font-weight: 850;
+
+  /*
+    Keep spacing small enough
+    so 45,672 fits.
+  */
+
+  letter-spacing:
+    clamp(0px, 0.8vw, 6px);
+
+  /*
+    IMPORTANT:
+    normal prevents squeezing/cutting.
+  */
+
+  white-space: normal;
+
+  overflow: visible;
+
+  overflow-wrap: normal;
+
+  word-break: normal;
+
+  line-height: 1.2;
+
+  display: block;
+
+  padding: 0 5px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      #82cfff,
+      #c19cff
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 35px rgba(85, 135, 245, 0.16);
+}
+
+/* =========================================================
+   PLACE VALUE GRID
+   ========================================================= */
+
+.place-value-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.place-card {
+  min-width: 0;
+
+  width: 100%;
+
+  padding: 20px 10px;
+
+  text-align: center;
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(55, 75, 145, 0.17),
+      rgba(20, 25, 58, 0.42)
+    );
+
+  border:
+    1px solid rgba(140, 175, 250, 0.11);
+
+  transition: 0.3s ease;
+}
+
+.place-card:hover {
+  transform: translateY(-5px);
+
+  background:
+    rgba(65, 100, 200, 0.14);
+
+  border-color:
+    rgba(135, 175, 255, 0.25);
+}
+
+.place-digit {
+  font-size: 30px;
+
+  font-weight: 800;
+
+  color: #9bd5ff;
+
+  margin-bottom: 9px;
+}
+
+.place-card strong {
+  display: block;
+
+  min-height: 38px;
+
+  font-size: 12px;
+
+  line-height: 1.35;
+
+  color:
+    rgba(255, 255, 255, 0.78);
+
+  white-space: normal;
+
+  overflow-wrap: anywhere;
+}
+
+.place-card span {
+  display: block;
+
+  margin-top: 8px;
+
+  font-size: 13px;
+
+  color:
+    rgba(170, 195, 255, 0.65);
+}
+
+.place-summary {
+  margin-top: 20px;
+
+  padding: 15px;
+
+  text-align: center;
+
+  border-radius: 14px;
+
+  background:
+    rgba(55, 90, 180, 0.08);
+
+  color:
+    rgba(220, 230, 255, 0.63);
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+.place-summary strong {
+  color: #a8d9ff;
+}
+
+/* =========================================================
+   FACTORS
+   ========================================================= */
+
+.factor-area {
+  margin-top: 27px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 40px;
+
+  flex-wrap: wrap;
+}
+
+.factor-main {
+  width: 115px;
+  height: 115px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 28px;
+
+  font-size: 52px;
+
+  font-weight: 850;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(65, 110, 220, 0.24),
+      rgba(120, 65, 190, 0.18)
+    );
+
+  border:
+    1px solid rgba(150, 185, 255, 0.25);
+
+  box-shadow:
+    0 0 35px rgba(70, 115, 220, 0.18);
+}
+
+.factor-pairs {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.factor-pair {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 10px 14px;
+
+  border-radius: 12px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  border:
+    1px solid rgba(140, 175, 255, 0.09);
+
+  font-size: 15px;
+}
+
+.factor-pair span {
+  min-width: 30px;
+
+  text-align: center;
+
+  padding: 5px 8px;
+
+  border-radius: 8px;
+
+  background:
+    rgba(70, 110, 210, 0.14);
+
+  color: #a7d8ff;
+
+  font-weight: 800;
+}
+
+.factor-pair b {
+  color:
+    rgba(190, 200, 255, 0.55);
+}
+
+.factor-pair strong {
+  color:
+    rgba(255, 255, 255, 0.8);
+}
+
+/* =========================================================
+   HIGHLIGHT TEXT
+   ========================================================= */
+
+.highlight-text {
+  margin-top: 22px;
+
+  padding: 15px 18px;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(65, 105, 210, 0.10),
+      rgba(110, 65, 165, 0.06)
+    );
+
+  border:
+    1px solid rgba(125, 165, 255, 0.10);
+
+  color:
+    rgba(220, 230, 255, 0.63);
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   PRIME NUMBERS
+   ========================================================= */
+
+.prime-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(8, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin-top: 27px;
+}
+
+.prime-number {
+  aspect-ratio: 1;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 17px;
+
+  font-size: 22px;
+
+  font-weight: 800;
+
+  color: #dfeaff;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(65, 105, 210, 0.16),
+      rgba(100, 55, 160, 0.09)
+    );
+
+  border:
+    1px solid rgba(145, 185, 255, 0.14);
+
+  box-shadow:
+    inset 0 0 18px rgba(255, 255, 255, 0.015);
+
+  transition: 0.3s ease;
+}
+
+.prime-number:hover {
+  transform:
+    translateY(-6px)
+    scale(1.05);
+
+  border-color:
+    rgba(160, 205, 255, 0.45);
+
+  box-shadow:
+    0 0 25px rgba(80, 130, 235, 0.22);
+}
+
+/* =========================================================
+   EVERYDAY LIFE
+   ========================================================= */
+
+.everyday-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 15px;
+
+  margin-top: 22px;
+}
+
+.everyday-card {
+  min-height: 145px;
+
+  padding: 20px 12px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  border-radius: 18px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  border:
+    1px solid rgba(140, 175, 255, 0.09);
+
+  transition: 0.3s ease;
+}
+
+.everyday-card:hover {
+  transform: translateY(-6px);
+
+  background:
+    rgba(65, 105, 210, 0.11);
+
+  border-color:
+    rgba(140, 180, 255, 0.23);
+}
+
+.everyday-card span {
+  font-size: 31px;
+
+  margin-bottom: 9px;
+}
+
+.everyday-card strong {
+  font-size: 15px;
+}
+
+.everyday-card small {
+  margin-top: 6px;
+
+  color:
+    rgba(160, 195, 255, 0.60);
+
+  font-size: 13px;
+}
+
+/* =========================================================
+   MINI CHALLENGE
+   ========================================================= */
+
+.challenge-box {
+  position: relative;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin: 35px auto;
+
+  padding: 40px 30px;
+
+  text-align: center;
+
+  border-radius: 28px;
+
+  background:
+    radial-gradient(
+      circle at center top,
+      rgba(65, 105, 220, 0.13),
+      transparent 55%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(35, 45, 95, 0.50),
+      rgba(15, 18, 48, 0.60)
+    );
+
+  border:
+    1px solid rgba(140, 180, 255, 0.15);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.30);
+
+  backdrop-filter:
+    blur(14px);
+}
+
+.challenge-icon {
+  font-size: 45px;
+
+  margin-bottom: 10px;
+
+  animation:
+    targetPulse 2s ease-in-out infinite;
+}
+
+@keyframes targetPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.challenge-label {
+  margin: 0 0 8px;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+
+  color:
+    rgba(140, 185, 255, 0.55);
+}
+
+.challenge-box h2 {
+  margin: 0;
+
+  font-size:
+    clamp(25px, 4vw, 34px);
+
+  line-height: 1.25;
+}
+
+.challenge-box > p:not(.challenge-label) {
+  margin-top: 10px;
+
+  color:
+    rgba(220, 225, 255, 0.56);
+
+  font-size: 14px;
+}
+
+.challenge-options {
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 15px;
+
+  margin-top: 27px;
+}
+
+.challenge-option {
+  min-width: 90px;
+
+  padding: 14px 25px;
+
+  border-radius: 16px;
+
+  border:
+    1px solid rgba(140, 180, 255, 0.16);
+
+  background:
+    rgba(255, 255, 255, 0.045);
+
+  color: white;
+
+  font-size: 20px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.challenge-option:hover {
+  transform: translateY(-5px);
+
+  background:
+    rgba(70, 110, 215, 0.16);
+
+  border-color:
+    rgba(150, 190, 255, 0.32);
+}
+
+.challenge-option.correct {
+  background:
+    rgba(45, 190, 120, 0.16);
+
+  border-color:
+    rgba(70, 230, 145, 0.60);
+
+  box-shadow:
+    0 0 25px rgba(45, 210, 125, 0.16);
+
+  color: #8dffc2;
+}
+
+.challenge-option.wrong {
+  background:
+    rgba(230, 70, 90, 0.14);
+
+  border-color:
+    rgba(255, 100, 120, 0.50);
+
+  box-shadow:
+    0 0 22px rgba(255, 70, 90, 0.13);
+
+  color: #ff9ba8;
+}
+
+.challenge-feedback {
+  max-width: 700px;
+
+  margin: 22px auto 0;
+
+  padding: 16px 20px;
+
+  border-radius: 15px;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  animation:
+    feedbackAppear 0.3s ease-out;
+}
+
+.challenge-feedback.success {
+  background:
+    rgba(45, 190, 120, 0.09);
+
+  border:
+    1px solid rgba(70, 220, 140, 0.22);
+
+  color: #a5ffd0;
+}
+
+.challenge-feedback.error {
+  background:
+    rgba(230, 70, 90, 0.08);
+
+  border:
+    1px solid rgba(255, 100, 120, 0.20);
+
+  color: #ffb0ba;
+}
+
+@keyframes feedbackAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   LESSON END
+   ========================================================= */
+
+.lesson-end {
+  padding: 55px 25px 25px;
+
+  text-align: center;
+}
+
+.end-stars {
+  margin-bottom: 15px;
+
+  font-size: 20px;
+
+  letter-spacing: 8px;
+
+  opacity: 0.7;
+}
+
+.end-icon {
+  font-size: 58px;
+
+  margin-bottom: 12px;
+}
+
+.lesson-end h2 {
+  margin: 0;
+
+  font-size: 35px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      #8fd3ff,
+      #c39cff
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.lesson-end p {
+  max-width: 600px;
+
+  margin: 12px auto 0;
+
+  color:
+    rgba(220, 225, 255, 0.56);
+
+  line-height: 1.7;
+
+  font-size: 15px;
+}
+
+.end-message {
+  display: block;
+
+  margin-top: 14px;
+
+  color:
+    rgba(150, 190, 255, 0.62);
+
+  font-size: 13px;
+
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .numbers-topic {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .number-types {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .real-life-grid,
+  .everyday-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .prime-grid {
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+  }
+
+  .place-value-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  /*
+     PLACE VALUE NUMBER FIX
+  */
+
+  .big-number {
+    font-size:
+      clamp(42px, 10vw, 62px);
+
+    letter-spacing:
+      clamp(0px, 0.5vw, 4px);
+
+    white-space: normal;
+
+    overflow: visible;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .numbers-topic {
+    padding: 90px 12px 60px;
+  }
+
+  .numbers-content {
+    width: 100%;
+  }
+
+  .numbers-back {
+    top: 15px;
+    left: 14px;
+
+    padding: 9px 14px;
+
+    font-size: 12px;
+  }
+
+  .numbers-header {
+    margin-bottom: 40px;
+
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .numbers-hero-icon {
+    width: 78px;
+    height: 78px;
+
+    font-size: 42px;
+  }
+
+  .numbers-label {
+    font-size: 9px;
+
+    letter-spacing: 2.5px;
+  }
+
+  .numbers-header h1 {
+    font-size: 34px;
+
+    line-height: 1.18;
+
+    letter-spacing: 0;
+  }
+
+  .numbers-header > p:last-of-type {
+    font-size: 15px;
+  }
+
+  .number-section {
+    padding: 22px 16px;
+
+    border-radius: 21px;
+  }
+
+  .section-title {
+    gap: 11px;
+  }
+
+  .section-title > span {
+    width: 42px;
+    height: 42px;
+
+    font-size: 21px;
+  }
+
+  .section-title h2 {
+    font-size: 21px;
+
+    line-height: 1.3;
+  }
+
+  .real-life-grid,
+  .everyday-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+  .real-life-card {
+    min-height: 125px;
+  }
+
+  .number-types {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .number-type-card {
+    min-height: 195px;
+  }
+
+  /* =====================================================
+     BIG NUMBER — MAIN FIX
+     ===================================================== */
+
+  .big-number {
+    width: 100%;
+
+    max-width: 100%;
+
+    margin: 22px auto;
+
+    /*
+       Smaller font on phone
+    */
+
+    font-size:
+      clamp(34px, 12vw, 48px);
+
+    /*
+       VERY IMPORTANT
+    */
+
+    letter-spacing: 0;
+
+    white-space: normal;
+
+    overflow: visible;
+
+    overflow-wrap: normal;
+
+    word-break: normal;
+
+    line-height: 1.25;
+
+    padding: 0;
+
+    /*
+       Prevent flex/grid squeezing
+    */
+
+    min-width: 0;
+
+    flex-shrink: 1;
+  }
+
+  .place-value-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+  .place-card {
+    padding: 17px 7px;
+  }
+
+  .place-card strong {
+    font-size: 11px;
+
+    min-height: 38px;
+
+    overflow-wrap: anywhere;
+  }
+
+  .place-card span {
+    font-size: 12px;
+  }
+
+  .prime-grid {
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+
+    gap: 9px;
+  }
+
+  .prime-number {
+    font-size: 18px;
+
+    border-radius: 13px;
+  }
+
+  .factor-area {
+    gap: 22px;
+  }
+
+  .challenge-box {
+    padding: 32px 18px;
+  }
+
+  .challenge-options {
+    gap: 9px;
+  }
+
+  .challenge-option {
+    min-width: 72px;
+
+    padding: 12px 17px;
+
+    font-size: 18px;
+  }
+
+  .lesson-end h2 {
+    font-size: 30px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .numbers-topic {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .number-section {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
+  .section-title h2 {
+    font-size: 19px;
+  }
+
+  .real-life-grid,
+  .everyday-grid {
+    gap: 8px;
+  }
+
+  .place-value-grid {
+    gap: 8px;
+  }
+
+  /*
+     45,672 WILL FIT HERE
+  */
+
+  .big-number {
+    font-size: 29px;
+
+    letter-spacing: 0;
+
+    white-space: normal;
+
+    overflow: visible;
+
+    line-height: 1.3;
+
+    padding: 0;
+  }
+
+  .place-digit {
+    font-size: 26px;
+  }
+
+  .prime-grid {
+    gap: 7px;
+  }
+
+  .prime-number {
+    font-size: 16px;
+  }
+}
+
+/* =========================================================
+   EXTRA SAFETY FOR PLACE VALUE
+   ========================================================= */
+
+/*
+   If the parent of .big-number is flex/grid,
+   don't allow it to become narrower than its content.
+*/
+
+.number-section:has(.big-number) {
+  min-width: 0;
+}
+
+.big-number,
+.big-number * {
+  max-width: 100%;
+}
+
+/*
+   Numbers with commas should never be broken
+   digit-by-digit.
+*/
+
+.big-number {
+  word-break: keep-all;
+  hyphens: none;
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+  }
+}

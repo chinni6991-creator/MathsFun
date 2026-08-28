@@ -1,0 +1,260 @@
+.maths-playground {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff8f0, #f5f0ff);
+  padding: 30px 50px 60px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.playground-back {
+  border: none;
+  background: white;
+  color: #333;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: 0.2s ease;
+}
+
+.playground-back:hover {
+  transform: translateY(-2px);
+}
+
+.playground-content {
+  max-width: 950px;
+  margin: 35px auto 0;
+  text-align: center;
+}
+
+.playground-icon {
+  font-size: 60px;
+  margin-bottom: 5px;
+}
+
+.playground-label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #e46a3a;
+}
+
+.playground-content h1 {
+  margin: 8px 0;
+  font-size: 44px;
+  font-weight: 900;
+  color: #29243b;
+}
+
+.playground-intro {
+  margin: 0 0 30px;
+  font-size: 18px;
+  color: #6d6878;
+}
+
+
+/* ACTIVITY GRID */
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.activity-card {
+  background: white;
+  border-radius: 24px;
+  padding: 30px 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.2s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-5px);
+}
+
+.activity-icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.activity-card h2 {
+  margin: 8px 0;
+  color: #302b43;
+  font-size: 24px;
+}
+
+.activity-card p {
+  min-height: 45px;
+  margin: 0 0 20px;
+  color: #777181;
+  line-height: 1.5;
+}
+
+.activity-card button {
+  border: none;
+  background: #e46a3a;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.activity-card button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* SCORE */
+
+.playground-score {
+  display: inline-block;
+  background: white;
+  padding: 12px 25px;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 800;
+  color: #d65e32;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  margin: 10px 0 25px;
+}
+
+
+/* QUESTION CARD */
+
+.playground-question-card {
+  background: white;
+  border-radius: 28px;
+  padding: 45px 35px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.09);
+  max-width: 750px;
+  margin: auto;
+}
+
+.playground-question-label {
+  margin: 0 0 20px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #9993a7;
+}
+
+.playground-question-card h2 {
+  margin: 0 0 35px;
+  font-size: 34px;
+  color: #302b43;
+}
+
+
+/* OPTIONS */
+
+.playground-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.playground-options button {
+  border: 2px solid #eadfd7;
+  background: #fffaf7;
+  color: #302b43;
+  padding: 18px;
+  border-radius: 16px;
+  font-size: 21px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.playground-options button:hover {
+  transform: translateY(-3px);
+  border-color: #e46a3a;
+  background: #fff1e9;
+}
+
+.playground-options button.playground-correct {
+  background: #dff8e8;
+  border-color: #35b96f;
+  color: #19864c;
+}
+
+.playground-options button.playground-wrong {
+  background: #ffe4e4;
+  border-color: #ef6262;
+  color: #c73737;
+}
+
+
+/* FEEDBACK */
+
+.playground-feedback {
+  margin-top: 28px;
+}
+
+.playground-feedback p {
+  font-size: 18px;
+  font-weight: 700;
+  color: #50495d;
+}
+
+.next-playground {
+  border: none;
+  background: #e46a3a;
+  color: white;
+  padding: 14px 25px;
+  border-radius: 13px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: 0.2s ease;
+}
+
+.next-playground:hover {
+  transform: translateY(-2px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+  .maths-playground {
+    padding: 25px 18px 45px;
+  }
+
+  .playground-content h1 {
+    font-size: 35px;
+  }
+
+  .playground-intro {
+    font-size: 16px;
+  }
+
+  .activity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .playground-question-card {
+    padding: 35px 20px;
+  }
+
+  .playground-question-card h2 {
+    font-size: 28px;
+  }
+
+  .playground-options {
+    grid-template-columns: 1fr;
+  }
+
+}

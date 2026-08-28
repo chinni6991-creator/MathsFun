@@ -1,0 +1,218 @@
+* {
+  box-sizing: border-box;
+}
+
+.multiplication-topic {
+  min-height: 100vh;
+  padding: 100px 25px 70px;
+  color: white;
+  background:
+    radial-gradient(circle at 50% 10%, rgba(80, 110, 230, 0.18), transparent 35%),
+    linear-gradient(135deg, #030616, #080c25, #120721);
+}
+
+.multiplication-back {
+  position: fixed;
+  top: 22px;
+  left: 24px;
+  z-index: 20;
+  padding: 11px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(150, 180, 255, 0.18);
+  background: rgba(25, 35, 80, 0.7);
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.multiplication-content {
+  width: min(1000px, 100%);
+  margin: auto;
+}
+
+.multiplication-icon {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  font-size: 42px;
+  background: rgba(70, 100, 210, 0.16);
+  border: 1px solid rgba(150, 185, 255, 0.2);
+}
+
+.multiplication-label {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #91b5ff;
+}
+
+.multiplication-content > h1 {
+  width: 100%;
+  margin: 8px 0 15px;
+  text-align: center;
+  font-size: clamp(34px, 6vw, 58px);
+  line-height: 1.2;
+  overflow-wrap: break-word;
+  background: linear-gradient(90deg, white, #8fd3ff, #c19cff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.multiplication-intro {
+  max-width: 700px;
+  margin: auto auto 45px;
+  text-align: center;
+  color: rgba(225, 230, 255, 0.65);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.multiplication-section {
+  margin-bottom: 28px;
+  padding: 30px;
+  border-radius: 25px;
+  background: rgba(25, 35, 75, 0.58);
+  border: 1px solid rgba(135, 165, 245, 0.13);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+.multiplication-section h2 {
+  margin-top: 0;
+  font-size: 27px;
+}
+
+.multiplication-section p {
+  color: rgba(225, 230, 255, 0.65);
+  line-height: 1.7;
+}
+
+.multiplication-example {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 28px 0;
+  flex-wrap: wrap;
+}
+
+.multiplication-example span {
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: rgba(65, 105, 210, 0.2);
+  border: 1px solid rgba(140, 180, 255, 0.25);
+  color: #a8d9ff;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.multiplication-example strong {
+  font-size: 30px;
+  color: #c19cff;
+}
+
+.multiplication-rule {
+  text-align: center;
+}
+
+.multiplication-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.multiplication-card {
+  padding: 25px 15px;
+  text-align: center;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(140, 175, 255, 0.1);
+}
+
+.multiplication-card strong {
+  display: block;
+  color: #a8d9ff;
+  font-size: 19px;
+}
+
+.multiplication-card small {
+  display: block;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.challenge {
+  text-align: center;
+}
+
+.multiplication-challenge-icon {
+  font-size: 42px;
+}
+
+.multiplication-answers {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.multiplication-answers button {
+  padding: 13px 28px;
+  border-radius: 14px;
+  border: 1px solid rgba(140, 180, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.multiplication-answers button:hover {
+  transform: translateY(-4px);
+  background: rgba(70, 110, 215, 0.2);
+}
+
+@media (max-width: 650px) {
+
+  .multiplication-topic {
+    padding: 90px 14px 50px;
+  }
+
+  .multiplication-back {
+    top: 15px;
+    left: 14px;
+    padding: 9px 14px;
+    font-size: 12px;
+  }
+
+  .multiplication-section {
+    padding: 22px 16px;
+  }
+
+  .multiplication-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .multiplication-example {
+    gap: 9px;
+  }
+
+  .multiplication-example span {
+    width: 58px;
+    height: 58px;
+    font-size: 20px;
+  }
+
+  .multiplication-example strong {
+    font-size: 24px;
+  }
+}
