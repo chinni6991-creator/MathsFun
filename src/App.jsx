@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Screen2 from './Screen2'
+import { supabase } from './supabase'
 import './App.css'
 
 function App() {

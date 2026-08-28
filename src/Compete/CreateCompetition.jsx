@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './CreateCompetition.css'
+import { supabase } from '../supabase'
 
 function CreateCompetition({ onBack, onCreate }) {
 
@@ -23,27 +24,53 @@ function CreateCompetition({ onBack, onCreate }) {
 
 
   // CREATE COMPETITION
-  const handleCreate = () => {
+  const handleCreate = async () => {
 
-    const competitionData = {
-      mode: mode,
-      participants: participants || '2',
-      topic: topic || 'Mixed Maths',
+  const battleCode = Math.random()
+    .toString(36)
+    .substring(2, 8)
+    .toUpperCase()
 
-      difficulty:
-        difficulty === 'easy'
-          ? 'Easy'
-          : difficulty === 'moderate'
-          ? 'Moderate'
-          : 'Difficult',
+  const competitionData = {
+    battle_code: battleCode,
+    mode: mode,
+    topic: topic || 'Mixed Maths',
 
-      questions: questions,
-      time: time
-    }
+    difficulty:
+      difficulty === 'easy'
+        ? 'Easy'
+        : difficulty === 'moderate'
+        ? 'Moderate'
+        : 'Difficult',
 
-    onCreate(competitionData)
+    questions: Number(questions),
+    time_per_question: Number(time),
+
+    host_name: 'Host',
+    status: 'waiting',
+
+    participants: []
   }
 
+  const { data, error } = await supabase
+    .from('Battles')
+    .insert([competitionData])
+    .select()
+    .single()
+
+  if (error) {
+    console.error('Battle creation error:', error)
+    alert('Could not create the battle. Please try again.')
+    return
+  }
+
+  console.log('Battle created:', data)
+
+  onCreate({
+    ...data,
+    participants_limit: Number(participants) || 2
+  })
+}
 
   return (
     <div className="create-competition">
