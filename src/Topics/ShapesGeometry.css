@@ -1,0 +1,13 @@
+.shapes-topic{min-height:100vh;background:linear-gradient(135deg,#fff7ed,#f5f3ff);padding:30px 20px 60px;font-family:Arial,sans-serif}
+.shapes-back{background:#f97316;color:white;border:0;padding:12px 22px;border-radius:12px;font-weight:bold}
+.shapes-content{max-width:950px;margin:auto;text-align:center}
+.shapes-icon{font-size:60px}.shapes-label{color:#ea580c;font-weight:bold;letter-spacing:2px}
+.shapes-content h1{font-size:42px;color:#7c2d12}.shapes-intro{font-size:18px;color:#555}
+.shapes-section{background:white;border-radius:20px;padding:28px;margin:22px 0;box-shadow:0 8px 25px #0001;text-align:left}
+.shapes-section h2{color:#c2410c}.shapes-section p{font-size:17px;line-height:1.7;color:#555}
+.shapes-example,.shapes-highlight{background:#fff7ed;padding:20px;border-radius:15px;text-align:center;font-size:23px;margin:15px 0}
+.shapes-cards{display:flex;gap:15px;flex-wrap:wrap}
+.shapes-card{flex:1;min-width:180px;background:#fffbeb;padding:20px;border-radius:16px;text-align:center}
+.challenge{text-align:center;background:#fefce8}
+.shapes-question{text-align:center;font-weight:bold}
+@media(max-width:700px){.shapes-content h1{font-size:30px}.shapes-cards{display:block}.shapes-card{margin:10px 0}}

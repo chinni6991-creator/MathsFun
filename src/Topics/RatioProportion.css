@@ -1,0 +1,13 @@
+.ratio-topic{min-height:100vh;background:linear-gradient(135deg,#fff7ed,#eff6ff);padding:30px 20px 60px;font-family:Arial,sans-serif}
+.ratio-back{background:#ea580c;color:white;border:0;padding:12px 22px;border-radius:12px;font-weight:bold}
+.ratio-content{max-width:950px;margin:auto;text-align:center}
+.ratio-icon{font-size:60px}.ratio-label{color:#ea580c;font-weight:bold;letter-spacing:2px}
+.ratio-content h1{font-size:42px;color:#7c2d12}.ratio-intro{font-size:18px;color:#555}
+.ratio-section{background:white;border-radius:20px;padding:28px;margin:22px 0;box-shadow:0 8px 25px #0001;text-align:left}
+.ratio-section h2{color:#c2410c}.ratio-section p{font-size:17px;line-height:1.7;color:#555}
+.ratio-example,.ratio-highlight{background:#fff7ed;padding:20px;border-radius:15px;text-align:center;font-size:23px;margin:15px 0}
+.ratio-cards{display:flex;gap:15px;flex-wrap:wrap}
+.ratio-card{flex:1;min-width:190px;background:#fffbeb;padding:20px;border-radius:16px;text-align:center}
+.challenge{text-align:center;background:#fefce8}
+.ratio-question{text-align:center;font-weight:bold}
+@media(max-width:700px){.ratio-content h1{font-size:30px}.ratio-cards{display:block}.ratio-card{margin:10px 0}}

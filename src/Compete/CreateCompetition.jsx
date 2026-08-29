@@ -4,80 +4,87 @@ import { supabase } from '../supabase'
 
 function CreateCompetition({ onBack, onCreate }) {
 
-  // Competition mode
   const [mode, setMode] = useState('individual')
-
-  // Difficulty
   const [difficulty, setDifficulty] = useState('easy')
-
-  // Participants
   const [participants, setParticipants] = useState('')
-
-  // Maths topic
   const [topic, setTopic] = useState('')
-
-  // Questions
   const [questions, setQuestions] = useState('10')
-
-  // Time
   const [time, setTime] = useState('30')
 
-
-  // CREATE COMPETITION
   const handleCreate = async () => {
 
-  const battleCode = Math.random()
-    .toString(36)
-    .substring(2, 8)
-    .toUpperCase()
+    // Check participants
+   const participantCount =
+  mode === 'individual'
+    ? 1
+    : Number(participants)
 
-  const competitionData = {
-    battle_code: battleCode,
-    mode: mode,
-    topic: topic || 'Mixed Maths',
-
-    difficulty:
-      difficulty === 'easy'
-        ? 'Easy'
-        : difficulty === 'moderate'
-        ? 'Moderate'
-        : 'Difficult',
-
-    questions: Number(questions),
-    time_per_question: Number(time),
-
-    host_name: 'Host',
-    status: 'waiting',
-
-    participants: []
-  }
-
-  const { data, error } = await supabase
-    .from('Battles')
-    .insert([competitionData])
-    .select()
-    .single()
-
-  if (error) {
-    console.error('Battle creation error:', error)
-    alert('Could not create the battle. Please try again.')
-    return
-  }
-
-  console.log('Battle created:', data)
-
-  onCreate({
-    ...data,
-    participants_limit: Number(participants) || 2
-  })
+if (mode !== 'individual' && (!participantCount || participantCount < 2)) {
+  alert('Please enter at least 2 participants.')
+  return
 }
+
+if (participantCount > 100) {
+  alert('Maximum 100 participants are allowed.')
+  return
+}
+
+    // Generate unique battle code
+    const battleCode = Math.random()
+      .toString(36)
+      .substring(2, 8)
+      .toUpperCase()
+
+    // Prepare competition data
+    const competitionData = {
+      battle_code: battleCode,
+      mode: mode,
+      topic: topic || 'Mixed Maths',
+
+      difficulty:
+        difficulty === 'easy'
+          ? 'Easy'
+          : difficulty === 'moderate'
+            ? 'Moderate'
+            : 'Difficult',
+
+      questions: Number(questions),
+      time_per_question: Number(time),
+
+      host_name: 'Host',
+      status: 'waiting',
+
+      participants: []
+    }
+
+    console.log('Creating battle:', competitionData)
+
+    // Save battle to Supabase
+    const { data, error } = await supabase
+      .from('Battles')
+      .insert([competitionData])
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Battle creation error:', error)
+      alert('Could not create the battle. Please try again.')
+      return
+    }
+
+    console.log('Battle created successfully:', data)
+
+    // Send competition data to Screen5
+    onCreate({
+      ...data,
+      participants_limit: participantCount
+    })
+  }
 
   return (
     <div className="create-competition">
 
-
       {/* BACK BUTTON */}
-
       <button
         className="create-back"
         onClick={onBack}
@@ -85,12 +92,9 @@ function CreateCompetition({ onBack, onCreate }) {
         ← BACK
       </button>
 
-
       <div className="create-content">
 
-
         {/* HEADER */}
-
         <div className="create-icon">
           🏆
         </div>
@@ -107,28 +111,19 @@ function CreateCompetition({ onBack, onCreate }) {
           Choose how you want to battle! 🔥
         </p>
 
-
         {/* SETUP CARD */}
-
         <div className="setup-card">
 
-
-          {/* =========================
-              COMPETITION TYPE
-          ========================= */}
-
+          {/* COMPETITION TYPE */}
           <div className="setup-section">
 
             <label>
               🏁 HOW DO YOU WANT TO PLAY?
             </label>
 
-
             <div className="choice-buttons">
 
-
               {/* INDIVIDUAL */}
-
               <button
                 type="button"
                 className={`choice-button ${
@@ -136,10 +131,7 @@ function CreateCompetition({ onBack, onCreate }) {
                 }`}
                 onClick={() => setMode('individual')}
               >
-
-                <span>
-                  👤
-                </span>
+                <span>👤</span>
 
                 <strong>
                   Individual
@@ -148,12 +140,9 @@ function CreateCompetition({ onBack, onCreate }) {
                 <small>
                   Play Solo
                 </small>
-
               </button>
 
-
               {/* TEAM */}
-
               <button
                 type="button"
                 className={`choice-button ${
@@ -161,10 +150,7 @@ function CreateCompetition({ onBack, onCreate }) {
                 }`}
                 onClick={() => setMode('team')}
               >
-
-                <span>
-                  👥
-                </span>
+                <span>👥</span>
 
                 <strong>
                   Team
@@ -173,12 +159,9 @@ function CreateCompetition({ onBack, onCreate }) {
                 <small>
                   Team Battle
                 </small>
-
               </button>
 
-
               {/* FRIEND */}
-
               <button
                 type="button"
                 className={`choice-button ${
@@ -186,10 +169,7 @@ function CreateCompetition({ onBack, onCreate }) {
                 }`}
                 onClick={() => setMode('friend')}
               >
-
-                <span>
-                  🔗
-                </span>
+                <span>🔗</span>
 
                 <strong>
                   Friend Battle
@@ -198,29 +178,18 @@ function CreateCompetition({ onBack, onCreate }) {
                 <small>
                   Share a Link
                 </small>
-
               </button>
 
-
             </div>
-
           </div>
 
-
-          {/* =========================
-              MODE INFORMATION
-          ========================= */}
-
+          {/* MODE INFORMATION */}
           {mode === 'individual' && (
-
             <div className="mode-info">
 
-              <span>
-                👤
-              </span>
+              <span>👤</span>
 
               <div>
-
                 <strong>
                   Individual Battle
                 </strong>
@@ -228,24 +197,17 @@ function CreateCompetition({ onBack, onCreate }) {
                 <p>
                   Play by yourself and challenge your Maths skills.
                 </p>
-
               </div>
 
             </div>
-
           )}
 
-
           {mode === 'team' && (
-
             <div className="mode-info">
 
-              <span>
-                👥
-              </span>
+              <span>👥</span>
 
               <div>
-
                 <strong>
                   Team Battle
                 </strong>
@@ -253,24 +215,17 @@ function CreateCompetition({ onBack, onCreate }) {
                 <p>
                   Create teams and compete together.
                 </p>
-
               </div>
 
             </div>
-
           )}
 
-
           {mode === 'friend' && (
-
             <div className="mode-info">
 
-              <span>
-                🔗
-              </span>
+              <span>🔗</span>
 
               <div>
-
                 <strong>
                   Friend Battle
                 </strong>
@@ -278,46 +233,60 @@ function CreateCompetition({ onBack, onCreate }) {
                 <p>
                   Create a battle and share the link with your friend.
                 </p>
-
               </div>
 
             </div>
-
           )}
 
+       {/* PARTICIPANTS */}
+{mode !== 'individual' && (
+  <div className="setup-section">
 
-          {/* =========================
-              PARTICIPANTS
-          ========================= */}
+    <label>
+      👥 PARTICIPANTS
+    </label>
 
-          <div className="setup-section">
+    <input
+      type="number"
+      min="2"
+      max="100"
+      value={participants}
+      onChange={(e) => setParticipants(e.target.value)}
+      placeholder={
+        mode === 'team'
+          ? 'Total number of players'
+          : 'Number of players'
+      }
+    />
 
-            <label>
-              👥 PARTICIPANTS
-            </label>
+  </div>
+)}
 
-            <input
-              type="number"
-              min="2"
-              max="100"
-              value={participants}
-              onChange={(e) => setParticipants(e.target.value)}
-              placeholder={
-                mode === 'individual'
-                  ? 'Number of players'
-                  : mode === 'team'
-                  ? 'Total number of players'
-                  : 'Number of players'
-              }
-            />
+{mode === 'individual' && (
+  <div className="setup-section">
 
-          </div>
+    <label>
+      👤 PARTICIPANTS
+    </label>
 
+    <div className="mode-info">
+      <span>👤</span>
 
-          {/* =========================
-              TOPIC
-          ========================= */}
+      <div>
+        <strong>
+          1 Player
+        </strong>
 
+        <p>
+          Individual battle — you are the only player.
+        </p>
+      </div>
+    </div>
+
+  </div>
+)}
+
+          {/* TOPIC */}
           <div className="setup-section">
 
             <label>
@@ -369,11 +338,7 @@ function CreateCompetition({ onBack, onCreate }) {
 
           </div>
 
-
-          {/* =========================
-              DIFFICULTY
-          ========================= */}
-
+          {/* DIFFICULTY */}
           <div className="setup-section">
 
             <label>
@@ -381,7 +346,6 @@ function CreateCompetition({ onBack, onCreate }) {
             </label>
 
             <div className="difficulty-buttons">
-
 
               <button
                 type="button"
@@ -393,7 +357,6 @@ function CreateCompetition({ onBack, onCreate }) {
                 🟢 Easy
               </button>
 
-
               <button
                 type="button"
                 className={`difficulty-button moderate ${
@@ -403,7 +366,6 @@ function CreateCompetition({ onBack, onCreate }) {
               >
                 🟡 Moderate
               </button>
-
 
               <button
                 type="button"
@@ -415,21 +377,14 @@ function CreateCompetition({ onBack, onCreate }) {
                 🔴 Difficult
               </button>
 
-
             </div>
 
           </div>
 
-
-          {/* =========================
-              QUESTIONS + TIME
-          ========================= */}
-
+          {/* QUESTIONS + TIME */}
           <div className="setup-row">
 
-
             {/* QUESTIONS */}
-
             <div className="setup-section">
 
               <label>
@@ -461,9 +416,7 @@ function CreateCompetition({ onBack, onCreate }) {
 
             </div>
 
-
             {/* TIME */}
-
             <div className="setup-section">
 
               <label>
@@ -497,11 +450,7 @@ function CreateCompetition({ onBack, onCreate }) {
 
           </div>
 
-
-          {/* =========================
-              POINTS
-          ========================= */}
-
+          {/* POINTS */}
           <div className="points-info">
 
             <span>
@@ -522,47 +471,32 @@ function CreateCompetition({ onBack, onCreate }) {
 
           </div>
 
-
-          {/* =========================
-              CREATE BUTTON
-          ========================= */}
-
+          {/* CREATE BUTTON */}
           <button
             type="button"
             className="create-button"
             onClick={handleCreate}
           >
-
             {mode === 'friend'
               ? '🔗 CREATE & GET LINK'
               : '🚀 CREATE COMPETITION'
             }
-
           </button>
-
 
         </div>
 
-
-        {/* =========================
-            BATTLE ROUNDS
-        ========================= */}
-
+        {/* BATTLE ROUNDS */}
         <div className="round-preview">
 
           <h2>
             🏆 BATTLE ROUNDS
           </h2>
 
-
           <div className="rounds">
-
 
             <div className="round easy-round">
 
-              <span>
-                1
-              </span>
+              <span>1</span>
 
               <strong>
                 Quick Start
@@ -574,12 +508,9 @@ function CreateCompetition({ onBack, onCreate }) {
 
             </div>
 
-
             <div className="round moderate-round">
 
-              <span>
-                2
-              </span>
+              <span>2</span>
 
               <strong>
                 Think Fast
@@ -591,12 +522,9 @@ function CreateCompetition({ onBack, onCreate }) {
 
             </div>
 
-
             <div className="round difficult-round">
 
-              <span>
-                3
-              </span>
+              <span>3</span>
 
               <strong>
                 Challenge
@@ -608,12 +536,9 @@ function CreateCompetition({ onBack, onCreate }) {
 
             </div>
 
-
             <div className="round final-round">
 
-              <span>
-                4
-              </span>
+              <span>4</span>
 
               <strong>
                 Super Challenge
@@ -625,11 +550,9 @@ function CreateCompetition({ onBack, onCreate }) {
 
             </div>
 
-
           </div>
 
         </div>
-
 
       </div>
 

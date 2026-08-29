@@ -1,0 +1,13 @@
+.money-topic{min-height:100vh;background:linear-gradient(135deg,#ecfdf5,#fffbeb);padding:30px 20px 60px;font-family:Arial,sans-serif}
+.money-back{background:#16a34a;color:white;border:0;padding:12px 22px;border-radius:12px;font-weight:bold}
+.money-content{max-width:950px;margin:auto;text-align:center}
+.money-icon{font-size:60px}.money-label{color:#16a34a;font-weight:bold;letter-spacing:2px}
+.money-content h1{font-size:42px;color:#14532d}.money-intro{font-size:18px;color:#555}
+.money-section{background:white;border-radius:20px;padding:28px;margin:22px 0;box-shadow:0 8px 25px #0001;text-align:left}
+.money-section h2{color:#15803d}.money-section p{font-size:17px;line-height:1.7;color:#555}
+.money-example,.money-highlight{background:#f0fdf4;padding:20px;border-radius:15px;text-align:center;font-size:22px;margin:15px 0}
+.money-cards{display:flex;gap:15px;flex-wrap:wrap}
+.money-card{flex:1;min-width:180px;background:#f0fdf4;padding:20px;border-radius:16px;text-align:center}
+.challenge{text-align:center;background:#fefce8}
+.money-question{text-align:center;font-weight:bold}
+@media(max-width:700px){.money-content h1{font-size:30px}.money-cards{display:block}.money-card{margin:10px 0}}

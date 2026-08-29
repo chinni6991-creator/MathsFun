@@ -1,0 +1,13 @@
+.perimeter-topic{min-height:100vh;background:linear-gradient(135deg,#eff6ff,#f0fdfa);padding:30px 20px 60px;font-family:Arial,sans-serif}
+.perimeter-back{background:#0284c7;color:white;border:0;padding:12px 22px;border-radius:12px;font-weight:bold}
+.perimeter-content{max-width:950px;margin:auto;text-align:center}
+.perimeter-icon{font-size:60px}.perimeter-label{color:#0284c7;font-weight:bold;letter-spacing:2px}
+.perimeter-content h1{font-size:42px;color:#164e63}.perimeter-intro{font-size:18px;color:#555}
+.perimeter-section{background:white;border-radius:20px;padding:28px;margin:22px 0;box-shadow:0 8px 25px #0001;text-align:left}
+.perimeter-section h2{color:#0369a1}.perimeter-section p{font-size:17px;line-height:1.7;color:#555}
+.perimeter-visual,.area-visual,.formula-box,.perimeter-example,.perimeter-highlight{background:#f0f9ff;padding:20px;border-radius:15px;text-align:center;font-size:22px;margin:15px 0}
+.comparison-cards{display:flex;gap:15px}.comparison-card{flex:1;background:#f0fdfa;padding:20px;border-radius:16px;text-align:center}
+.perimeter-story{text-align:center}.perimeter-rules p{text-align:center}
+.challenge{text-align:center;background:#fefce8}
+.perimeter-question{text-align:center;font-weight:bold}
+@media(max-width:700px){.perimeter-content h1{font-size:30px}.comparison-cards{display:block}.comparison-card{margin:10px 0}}

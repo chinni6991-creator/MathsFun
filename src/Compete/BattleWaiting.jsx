@@ -12,8 +12,6 @@ function BattleWaiting({
   return (
     <div className="battle-waiting">
 
-      {/* BACK BUTTON */}
-
       <button
         className="waiting-back"
         onClick={onBack}
@@ -21,10 +19,7 @@ function BattleWaiting({
         ← BACK
       </button>
 
-
       <div className="waiting-content">
-
-        {/* HEADER */}
 
         <div className="waiting-trophy">
           🏆
@@ -42,9 +37,6 @@ function BattleWaiting({
           Get your friends ready! The battle is about to begin 🔥
         </p>
 
-
-        {/* BATTLE CODE */}
-
         <div className="waiting-code-card">
 
           <span>
@@ -52,7 +44,6 @@ function BattleWaiting({
           </span>
 
           <div>
-
             <small>
               BATTLE CODE
             </small>
@@ -60,13 +51,9 @@ function BattleWaiting({
             <strong>
               {battleCode || '------'}
             </strong>
-
           </div>
 
         </div>
-
-
-        {/* PLAYERS */}
 
         <div className="players-card">
 
@@ -81,9 +68,6 @@ function BattleWaiting({
             </span>
 
           </div>
-
-
-          {/* HOST / CURRENT PLAYER */}
 
           <div className="player-row host-player">
 
@@ -108,9 +92,6 @@ function BattleWaiting({
             </div>
 
           </div>
-
-
-          {/* FRIENDS */}
 
           {players.map((player, index) => (
 
@@ -143,9 +124,6 @@ function BattleWaiting({
 
           ))}
 
-
-          {/* NO FRIENDS YET */}
-
           {players.length === 0 && (
 
             <div className="waiting-for-friends">
@@ -168,9 +146,6 @@ function BattleWaiting({
 
         </div>
 
-
-        {/* SHARE SECTION */}
-
         <div className="share-card">
 
           <span>
@@ -191,9 +166,6 @@ function BattleWaiting({
           </div>
 
         </div>
-
-
-        {/* START BUTTON */}
 
         {isHost ? (
 
@@ -220,11 +192,9 @@ function BattleWaiting({
 
         )}
 
-
         <p className="waiting-warning">
           ⚡ Make sure everyone has joined before starting!
         </p>
-
 
       </div>
 

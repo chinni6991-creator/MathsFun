@@ -1,0 +1,14 @@
+.decimals-topic{min-height:100vh;background:linear-gradient(135deg,#ecfdf5,#eff6ff);padding:30px 20px 60px;font-family:Arial,sans-serif}
+.decimals-back{background:#059669;color:white;border:0;padding:12px 22px;border-radius:12px;font-weight:bold}
+.decimals-content{max-width:950px;margin:auto;text-align:center}
+.decimals-icon{font-size:60px}.decimals-label{color:#059669;font-weight:bold;letter-spacing:2px}
+.decimals-content h1{font-size:42px;color:#064e3b}.decimals-intro{font-size:18px;color:#555}
+.decimals-section{background:white;border-radius:20px;padding:28px;margin:22px 0;box-shadow:0 8px 25px #0001;text-align:left}
+.decimals-section h2{color:#047857}.decimals-section p{font-size:17px;line-height:1.7;color:#555}
+.decimal-example,.decimals-highlight{background:#ecfdf5;padding:20px;border-radius:15px;text-align:center;font-size:23px;margin:15px 0}
+.decimal-cards{display:flex;gap:15px;flex-wrap:wrap}
+.decimal-card{flex:1;min-width:190px;background:#f0fdf4;padding:20px;border-radius:16px;text-align:center}
+.decimal-card h3{color:#059669}
+.challenge{text-align:center;background:#fefce8}
+.decimals-question{text-align:center;font-weight:bold}
+@media(max-width:700px){.decimals-content h1{font-size:30px}.decimal-cards{display:block}.decimal-card{margin:10px 0}}

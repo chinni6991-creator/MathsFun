@@ -1,0 +1,13 @@
+.dots-topic{min-height:100vh;background:linear-gradient(135deg,#ecfeff,#f5f3ff);padding:30px 20px 60px;font-family:Arial,sans-serif}
+.dots-back{background:#0891b2;color:white;border:0;padding:12px 22px;border-radius:12px;font-weight:bold}
+.dots-content{max-width:950px;margin:auto;text-align:center}
+.dots-icon{font-size:60px}.dots-label{color:#0891b2;font-weight:bold;letter-spacing:2px}
+.dots-content h1{font-size:42px;color:#164e63}.dots-intro{font-size:18px;color:#555}
+.dots-section{background:white;border-radius:20px;padding:28px;margin:22px 0;box-shadow:0 8px 25px #0001;text-align:left}
+.dots-section h2{color:#0e7490}.dots-section p{font-size:17px;line-height:1.7;color:#555}
+.dots-visual,.triangle-dots,.square-dots,.dots-example,.dots-highlight{background:#ecfeff;padding:20px;border-radius:15px;text-align:center;font-size:23px;margin:15px 0}
+.point-visual{text-align:center;font-size:70px}.number-dots{text-align:center;font-size:30px;line-height:1.7}
+.dot-cards{display:flex;gap:15px;flex-wrap:wrap}.dot-card{flex:1;min-width:180px;background:#f0fdfa;padding:20px;border-radius:16px;text-align:center}
+.dots-story{text-align:center}.dots-rules p{text-align:center}
+.challenge{text-align:center;background:#fefce8}.dots-question{text-align:center;font-weight:bold}
+@media(max-width:700px){.dots-content h1{font-size:30px}.dot-cards{display:block}.dot-card{margin:10px 0}}

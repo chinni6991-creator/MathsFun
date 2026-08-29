@@ -1,0 +1,13 @@
+.figures3d-topic{min-height:100vh;background:linear-gradient(135deg,#eff6ff,#f5f3ff);padding:30px 20px 60px;font-family:Arial,sans-serif}
+.figures3d-back{background:#6366f1;color:white;border:0;padding:12px 22px;border-radius:12px;font-weight:bold}
+.figures3d-content{max-width:950px;margin:auto;text-align:center}
+.figures3d-icon{font-size:60px}.figures3d-label{color:#6366f1;font-weight:bold;letter-spacing:2px}
+.figures3d-content h1{font-size:42px;color:#3730a3}.figures3d-intro{font-size:18px;color:#555}
+.figures3d-section{background:white;border-radius:20px;padding:28px;margin:22px 0;box-shadow:0 8px 25px #0001;text-align:left}
+.figures3d-section h2{color:#4f46e5}.figures3d-section p{font-size:17px;line-height:1.7;color:#555}
+.figure-visual{font-size:80px;text-align:center}.figures3d-example,.figures3d-highlight{background:#eef2ff;padding:20px;border-radius:15px;text-align:center;font-size:21px;margin:15px 0}
+.parts-cards{display:flex;gap:15px;flex-wrap:wrap}.parts-card{flex:1;min-width:180px;background:#f5f3ff;padding:20px;border-radius:16px;text-align:center}
+.shape-table{display:flex;flex-direction:column;gap:8px}.shape-row{display:flex;justify-content:space-between;gap:10px;background:#eef2ff;padding:14px;border-radius:10px}
+.figures3d-story{text-align:center}.figures3d-rules p{text-align:center}
+.challenge{text-align:center;background:#fefce8}.figures3d-question{text-align:center;font-weight:bold}
+@media(max-width:700px){.figures3d-content h1{font-size:30px}.parts-cards{display:block}.parts-card{margin:10px 0}.shape-row{display:block;text-align:center}.shape-row span{display:block;margin:5px}}

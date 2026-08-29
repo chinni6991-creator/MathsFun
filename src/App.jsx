@@ -4,8 +4,9 @@ import { supabase } from './supabase'
 import './App.css'
 
 function App() {
-  const [showScreen2, setShowScreen2] = useState(false)
-
+  const [showScreen2, setShowScreen2] = useState(
+  window.location.pathname.startsWith('/join/')
+)
   if (showScreen2) {
     return <Screen2 />
   }

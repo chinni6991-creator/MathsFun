@@ -12,6 +12,13 @@ import Leaderboard from './Compete/Leaderboard'
 
 function Screen5({ onBack }) {
 
+    const pathParts = window.location.pathname.split('/')
+
+  const urlBattleCode =
+    pathParts[1] === 'join'
+      ? pathParts[2]
+      : null
+
   // ==============================
   // SCREEN STATES
   // ==============================
@@ -20,7 +27,9 @@ function Screen5({ onBack }) {
   const [showCreateCompetition, setShowCreateCompetition] = useState(false)
   const [showCompetitionReady, setShowCompetitionReady] = useState(false)
   const [showMathsBattle, setShowMathsBattle] = useState(false)
-  const [showJoinBattle, setShowJoinBattle] = useState(false)
+const [showJoinBattle, setShowJoinBattle] = useState(
+  window.location.pathname.startsWith('/join/')
+)
   const [showBattleWaiting, setShowBattleWaiting] = useState(false)
   const [showLeaderboard, setShowLeaderboard] = useState(false)
 
@@ -144,7 +153,7 @@ function Screen5({ onBack }) {
     return (
       <JoinBattle
 
-        battleCode="HTP163"
+        battleCode={urlBattleCode || 'HTP163'}
 
         onBack={() => {
           setShowJoinBattle(false)
