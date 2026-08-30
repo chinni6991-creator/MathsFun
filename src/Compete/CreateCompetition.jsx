@@ -37,25 +37,30 @@ if (participantCount > 100) {
 
     // Prepare competition data
     const competitionData = {
-      battle_code: battleCode,
-      mode: mode,
-      topic: topic || 'Mixed Maths',
+  battle_code: battleCode,
+  mode: mode,
+  topic: topic || 'Mixed Maths',
 
-      difficulty:
-        difficulty === 'easy'
-          ? 'Easy'
-          : difficulty === 'moderate'
-            ? 'Moderate'
-            : 'Difficult',
+  difficulty:
+    difficulty === 'easy'
+      ? 'Easy'
+      : difficulty === 'moderate'
+        ? 'Moderate'
+        : 'Difficult',
 
-      questions: Number(questions),
-      time_per_question: Number(time),
+  questions: Number(questions),
+time_per_question: Number(time),
 
-      host_name: 'Host',
-      status: 'waiting',
+host_name: 'Host',
+  status: 'waiting',
 
-      participants: []
-    }
+  participants: [],
+
+  current_question: 1,
+  battle_started_at: null,
+  scores: {},
+  winner: null
+}
 
     console.log('Creating battle:', competitionData)
 
@@ -67,10 +72,14 @@ if (participantCount > 100) {
       .single()
 
     if (error) {
-      console.error('Battle creation error:', error)
-      alert('Could not create the battle. Please try again.')
-      return
-    }
+  console.error('🔥 BATTLE CREATION ERROR:', error)
+
+  alert(
+    `Could not create battle.\n\n${error.message}`
+  )
+
+  return
+}
 
     console.log('Battle created successfully:', data)
 

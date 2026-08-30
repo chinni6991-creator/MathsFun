@@ -1,41 +1,139 @@
+import { useEffect, useState } from 'react'
 import './Leaderboard.css'
+import { supabase } from '../supabase'
 
 function Leaderboard({ onBack }) {
 
-  const players = [
-    {
-      rank: 1,
-      name: 'Anu',
-      score: 120,
-      emoji: '👑'
-    },
-    {
-      rank: 2,
-      name: 'Rahul',
-      score: 100,
-      emoji: '🥈'
-    },
-    {
-      rank: 3,
-      name: 'Sneha',
-      score: 85,
-      emoji: '🥉'
-    },
-    {
-      rank: 4,
-      name: 'Arjun',
-      score: 70,
-      emoji: '⭐'
-    },
-    {
-      rank: 5,
-      name: 'Priya',
-      score: 55,
-      emoji: '⭐'
+  const [players, setPlayers] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  // ==========================================
+  // LOAD LEADERBOARD
+  // ==========================================
+
+  useEffect(() => {
+
+    const loadLeaderboard = async () => {
+
+      try {
+
+        const { data, error } =
+          await supabase
+            .from('Battles')
+            .select('scores, winner')
+
+        if (error) {
+
+          console.error(
+            '❌ Could not load leaderboard:',
+            error
+          )
+
+          return
+        }
+
+
+        // ======================================
+        // COMBINE ALL PLAYER SCORES
+        // ======================================
+
+        const scoreMap = {}
+
+
+        data.forEach((battle) => {
+
+          const scores =
+            battle.scores &&
+            typeof battle.scores === 'object'
+              ? battle.scores
+              : {}
+
+
+          Object.entries(scores).forEach(
+            ([name, score]) => {
+
+              const numericScore =
+                Number(score) || 0
+
+
+              if (!scoreMap[name]) {
+
+                scoreMap[name] = 0
+
+              }
+
+
+              scoreMap[name] += numericScore
+
+            }
+          )
+
+        })
+
+
+        // ======================================
+        // CONVERT TO ARRAY
+        // ======================================
+
+        const sortedPlayers =
+          Object.entries(scoreMap)
+            .map(
+              ([name, score]) => ({
+                name,
+                score
+              })
+            )
+            .sort(
+              (a, b) =>
+                b.score - a.score
+            )
+            .map(
+              (player, index) => ({
+                ...player,
+                rank: index + 1
+              })
+            )
+
+
+        setPlayers(sortedPlayers)
+
+      } catch (error) {
+
+        console.error(
+          '❌ Leaderboard error:',
+          error
+        )
+
+      } finally {
+
+        setLoading(false)
+
+      }
+
     }
-  ]
+
+
+    loadLeaderboard()
+
+  }, [])
+
+
+  // ==========================================
+  // TOP 3
+  // ==========================================
+
+  const first =
+    players[0]
+
+  const second =
+    players[1]
+
+  const third =
+    players[2]
+
 
   return (
+
     <div className="leaderboard">
 
       {/* BACK */}
@@ -69,118 +167,190 @@ function Leaderboard({ onBack }) {
         </p>
 
 
+        {/* LOADING */}
+
+        {loading && (
+
+          <p>
+            ⏳ Loading leaderboard...
+          </p>
+
+        )}
+
+
         {/* TOP 3 */}
 
-        <div className="top-players">
+        {!loading &&
+          players.length > 0 && (
 
-          <div className="top-player second">
+          <div className="top-players">
 
-            <div className="player-medal">
-              🥈
-            </div>
+            {/* SECOND */}
 
-            <div className="player-avatar">
-              👤
-            </div>
+            {second && (
 
-            <h2>
-              Rahul
-            </h2>
+              <div className="top-player second">
 
-            <strong>
-              100 pts
-            </strong>
+                <div className="player-medal">
+                  🥈
+                </div>
+
+                <div className="player-avatar">
+                  👤
+                </div>
+
+                <h2>
+                  {second.name}
+                </h2>
+
+                <strong>
+                  {second.score} pts
+                </strong>
+
+              </div>
+
+            )}
+
+
+            {/* FIRST */}
+
+            {first && (
+
+              <div className="top-player first">
+
+                <div className="crown">
+                  👑
+                </div>
+
+                <div className="player-avatar">
+                  👑
+                </div>
+
+                <h2>
+                  {first.name}
+                </h2>
+
+                <strong>
+                  {first.score} pts
+                </strong>
+
+              </div>
+
+            )}
+
+
+            {/* THIRD */}
+
+            {third && (
+
+              <div className="top-player third">
+
+                <div className="player-medal">
+                  🥉
+                </div>
+
+                <div className="player-avatar">
+                  👤
+                </div>
+
+                <h2>
+                  {third.name}
+                </h2>
+
+                <strong>
+                  {third.score} pts
+                </strong>
+
+              </div>
+
+            )}
 
           </div>
 
+        )}
 
-          <div className="top-player first">
 
-            <div className="crown">
-              👑
-            </div>
+        {/* NO PLAYERS */}
 
-            <div className="player-avatar">
-              👑
-            </div>
+        {!loading &&
+          players.length === 0 && (
+
+          <div className="leaderboard-card">
 
             <h2>
-              Anu
+              📊 BATTLE RANKINGS
             </h2>
 
-            <strong>
-              120 pts
-            </strong>
+            <p>
+              No battles have been completed yet.
+            </p>
 
           </div>
 
-
-          <div className="top-player third">
-
-            <div className="player-medal">
-              🥉
-            </div>
-
-            <div className="player-avatar">
-              👤
-            </div>
-
-            <h2>
-              Sneha
-            </h2>
-
-            <strong>
-              85 pts
-            </strong>
-
-          </div>
-
-        </div>
+        )}
 
 
         {/* ALL PLAYERS */}
 
-        <div className="leaderboard-card">
+        {!loading &&
+          players.length > 0 && (
 
-          <h2>
-            📊 BATTLE RANKINGS
-          </h2>
+          <div className="leaderboard-card">
+
+            <h2>
+              📊 BATTLE RANKINGS
+            </h2>
 
 
-          <div className="ranking-list">
+            <div className="ranking-list">
 
-            {players.map((player) => (
+              {players.map((player) => (
 
-              <div
-                className={`ranking-row ${
-                  player.rank === 1 ? 'winner' : ''
-                }`}
-                key={player.rank}
-              >
+                <div
+                  className={`ranking-row ${
+                    player.rank === 1
+                      ? 'winner'
+                      : ''
+                  }`}
+                  key={player.name}
+                >
 
-                <span className="rank">
-                  #{player.rank}
-                </span>
+                  <span className="rank">
+                    #{player.rank}
+                  </span>
 
-                <span className="rank-emoji">
-                  {player.emoji}
-                </span>
 
-                <strong className="rank-name">
-                  {player.name}
-                </strong>
+                  <span className="rank-emoji">
 
-                <span className="rank-score">
-                  {player.score} pts
-                </span>
+                    {player.rank === 1
+                      ? '👑'
+                      : player.rank === 2
+                      ? '🥈'
+                      : player.rank === 3
+                      ? '🥉'
+                      : '⭐'}
 
-              </div>
+                  </span>
 
-            ))}
+
+                  <strong className="rank-name">
+                    {player.name}
+                  </strong>
+
+
+                  <span className="rank-score">
+                    {player.score} pts
+                  </span>
+
+                </div>
+
+              ))}
+
+            </div>
 
           </div>
 
-        </div>
+        )}
 
 
         {/* FOOTER */}
@@ -193,7 +363,9 @@ function Leaderboard({ onBack }) {
 
           <p>
             Keep solving, keep climbing!
-            <strong> Become the Maths Champion! 🏆</strong>
+            <strong>
+              {' '}Become the Maths Champion! 🏆
+            </strong>
           </p>
 
         </div>
@@ -201,6 +373,7 @@ function Leaderboard({ onBack }) {
       </div>
 
     </div>
+
   )
 }
 

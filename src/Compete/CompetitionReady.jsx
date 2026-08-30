@@ -65,10 +65,11 @@ function CompetitionReady({ competition, onBack, onStart }) {
             <div>
               <small>PARTICIPANTS</small>
               <strong>
-                {competition?.participants_limit ||
-                  competition?.participants ||
-                  1}
-              </strong>
+  {competition?.participants_limit ??
+    (Array.isArray(competition?.participants)
+      ? competition.participants.length + 1
+      : 1)}
+</strong>
             </div>
           </div>
 
@@ -107,10 +108,11 @@ function CompetitionReady({ competition, onBack, onStart }) {
             <div>
               <small>TIME / QUESTION</small>
               <strong>
-                {competition?.time_per_question ||
-                  competition?.time ||
-                  30} seconds
-              </strong>
+  {competition?.time_per_ques ||
+    competition?.time_per_question ||
+    competition?.time ||
+    30} seconds
+</strong>
             </div>
           </div>
 

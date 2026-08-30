@@ -1,5 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Screen5.css'
+
+import { supabase } from './supabase'
 
 import QuickBattle from './Compete/QuickBattle'
 import CreateCompetition from './Compete/CreateCompetition'
@@ -9,57 +11,263 @@ import JoinBattle from './Compete/JoinBattle'
 import BattleWaiting from './Compete/BattleWaiting'
 import Leaderboard from './Compete/Leaderboard'
 
-
 function Screen5({ onBack }) {
 
-    const pathParts = window.location.pathname.split('/')
+  // ==========================================
+  // URL BATTLE CODE
+  // ==========================================
+
+  const pathParts = window.location.pathname.split('/')
 
   const urlBattleCode =
     pathParts[1] === 'join'
       ? pathParts[2]
       : null
 
-  // ==============================
+
+  // ==========================================
   // SCREEN STATES
-  // ==============================
+  // ==========================================
 
-  const [showQuickBattle, setShowQuickBattle] = useState(false)
-  const [showCreateCompetition, setShowCreateCompetition] = useState(false)
-  const [showCompetitionReady, setShowCompetitionReady] = useState(false)
-  const [showMathsBattle, setShowMathsBattle] = useState(false)
-const [showJoinBattle, setShowJoinBattle] = useState(
-  window.location.pathname.startsWith('/join/')
-)
-  const [showBattleWaiting, setShowBattleWaiting] = useState(false)
-  const [showLeaderboard, setShowLeaderboard] = useState(false)
+  const [showQuickBattle, setShowQuickBattle] =
+    useState(false)
+
+  const [showCreateCompetition, setShowCreateCompetition] =
+    useState(false)
+
+  const [showCompetitionReady, setShowCompetitionReady] =
+    useState(false)
+
+  const [showMathsBattle, setShowMathsBattle] =
+    useState(false)
+
+  const [showJoinBattle, setShowJoinBattle] =
+    useState(
+      window.location.pathname.startsWith('/join/')
+    )
+
+  const [showBattleWaiting, setShowBattleWaiting] =
+    useState(false)
+
+  const [showLeaderboard, setShowLeaderboard] =
+    useState(false)
 
 
-  // ==============================
-  // DATA
-  // ==============================
+  // ==========================================
+  // BATTLE DATA
+  // ==========================================
 
-  const [competition, setCompetition] = useState(null)
-  const [joinedPlayer, setJoinedPlayer] = useState(null)
+  const [competition, setCompetition] =
+    useState(null)
+
+  const [joinedPlayer, setJoinedPlayer] =
+    useState(null)
+
+  const [players, setPlayers] =
+    useState([])
 
 
-  // ==============================
+  // ==========================================
+  // REALTIME BATTLE LISTENER
+  // ==========================================
+
+  useEffect(() => {
+
+    const battleCode =
+      competition?.battle_code ||
+      joinedPlayer?.battleCode ||
+      urlBattleCode
+
+
+    if (!battleCode) {
+      return
+    }
+
+
+    console.log(
+      '🔥 Listening for battle:',
+      battleCode
+    )
+
+
+    // ========================================
+    // LOAD CURRENT BATTLE
+    // ========================================
+
+    const loadBattle = async () => {
+
+      const { data, error } = await supabase
+        .from('Battles')
+        .select('*')
+        .eq('battle_code', battleCode)
+        .single()
+
+
+      if (error) {
+
+        console.error(
+          '❌ Could not load battle:',
+          error
+        )
+
+        return
+      }
+
+
+      console.log(
+        '📦 Current battle:',
+        data
+      )
+
+
+      setCompetition(data)
+
+
+      setPlayers(
+        Array.isArray(data.participants)
+          ? data.participants
+          : []
+      )
+
+
+      // ======================================
+      // FRIEND AUTO START
+      // ======================================
+
+      if (
+        data.status === 'started' &&
+        showBattleWaiting
+      ) {
+
+        console.log(
+          '🚀 HOST ALREADY STARTED!'
+        )
+
+
+        setShowBattleWaiting(false)
+
+        setShowMathsBattle(true)
+
+      }
+
+    }
+
+
+    loadBattle()
+
+
+    // ========================================
+    // SUPABASE REALTIME
+    // ========================================
+
+    const channel = supabase
+      .channel(`battle-${battleCode}`)
+
+      .on(
+        'postgres_changes',
+        {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'Battles',
+          filter: `battle_code=eq.${battleCode}`
+        },
+
+        (payload) => {
+
+          console.log(
+            '⚡ Battle updated:',
+            payload.new
+          )
+
+
+          const updatedBattle = payload.new
+
+
+          setCompetition(updatedBattle)
+
+
+          setPlayers(
+            Array.isArray(updatedBattle.participants)
+              ? updatedBattle.participants
+              : []
+          )
+
+
+          // ====================================
+          // FRIEND ENTERS GAME AUTOMATICALLY
+          // ====================================
+
+          if (
+            updatedBattle.status === 'started' &&
+            showBattleWaiting
+          ) {
+
+            console.log(
+              '🔥 HOST STARTED! FRIEND ENTERING GAME!'
+            )
+
+
+            setShowBattleWaiting(false)
+
+            setShowMathsBattle(true)
+
+          }
+
+        }
+      )
+
+      .subscribe((status) => {
+
+        console.log(
+          '📡 Realtime status:',
+          status
+        )
+
+      })
+
+
+    // ========================================
+    // CLEANUP
+    // ========================================
+
+    return () => {
+
+      console.log(
+        '🧹 Removing battle listener'
+      )
+
+      supabase.removeChannel(channel)
+
+    }
+
+  }, [
+    competition?.battle_code,
+    joinedPlayer?.battleCode,
+    urlBattleCode,
+    showBattleWaiting
+  ])
+
+
+  // ==========================================
   // QUICK BATTLE
-  // ==============================
+  // ==========================================
 
   if (showQuickBattle) {
 
     return (
       <QuickBattle
-        onBack={() => setShowQuickBattle(false)}
+        onBack={() => {
+          setShowQuickBattle(false)
+        }}
       />
     )
 
   }
 
 
-  // ==============================
+  // ==========================================
   // CREATE COMPETITION
-  // ==============================
+  // ==========================================
 
   if (showCreateCompetition) {
 
@@ -72,10 +280,25 @@ const [showJoinBattle, setShowJoinBattle] = useState(
 
         onCreate={(data) => {
 
+          console.log(
+            '🏆 Competition created:',
+            data
+          )
+
+
           setCompetition(data)
+
+
+          setPlayers(
+            Array.isArray(data.participants)
+              ? data.participants
+              : []
+          )
+
 
           setShowCreateCompetition(false)
 
+          // HOST GOES TO READY SCREEN
           setShowCompetitionReady(true)
 
         }}
@@ -86,9 +309,9 @@ const [showJoinBattle, setShowJoinBattle] = useState(
   }
 
 
-  // ==============================
+  // ==========================================
   // COMPETITION READY
-  // ==============================
+  // ==========================================
 
   if (showCompetitionReady) {
 
@@ -105,8 +328,82 @@ const [showJoinBattle, setShowJoinBattle] = useState(
 
         }}
 
-        onStart={() => {
+        onStart={async () => {
 
+          // ==================================
+          // NORMAL / INDIVIDUAL / TEAM
+          // ==================================
+
+          if (
+            competition?.mode !== 'friend'
+          ) {
+
+            setShowCompetitionReady(false)
+
+            setShowMathsBattle(true)
+
+            return
+
+          }
+
+
+          // ==================================
+          // FRIEND BATTLE
+          // HOST STARTS
+          // ==================================
+
+          console.log(
+            '🔥 HOST STARTING FRIEND BATTLE'
+          )
+
+
+          const { data, error } = await supabase
+            .from('Battles')
+            .update({
+              status: 'started'
+            })
+            .eq(
+              'battle_code',
+              competition.battle_code
+            )
+            .select()
+            .single()
+
+
+          if (error) {
+
+            console.error(
+              '❌ Could not start battle:',
+              error
+            )
+
+
+            alert(
+              'Could not start the battle. Please try again.'
+            )
+
+            return
+
+          }
+
+
+          console.log(
+            '✅ Battle started:',
+            data
+          )
+
+
+          setCompetition(data)
+
+
+          setPlayers(
+            Array.isArray(data.participants)
+              ? data.participants
+              : []
+          )
+
+
+          // HOST ENTERS GAME
           setShowCompetitionReady(false)
 
           setShowMathsBattle(true)
@@ -119,52 +416,83 @@ const [showJoinBattle, setShowJoinBattle] = useState(
   }
 
 
-  // ==============================
+  // ==========================================
   // LIVE MATHS BATTLE
-  // ==============================
+  // ==========================================
 
-  if (showMathsBattle) {
+if (showMathsBattle) {
 
-    return (
-      <MathsBattle
+  return (
+    <MathsBattle
 
-        competition={competition}
+      competition={competition}
 
-        onBack={() => {
+      playerName={
+        joinedPlayer?.name || 'Host'
+      }
 
-          setShowMathsBattle(false)
+      onBack={() => {
 
-          setShowCompetitionReady(true)
+        console.log('🏠 Leaving Maths Battle')
 
-        }}
+        setShowMathsBattle(false)
+        setShowBattleWaiting(false)
+        setShowCompetitionReady(false)
+        setShowCreateCompetition(false)
+        setShowJoinBattle(false)
 
-      />
-    )
 
-  }
+      }}
 
+    />
+  )
 
-  // ==============================
+}
+  // ==========================================
   // JOIN BATTLE
-  // ==============================
+  // ==========================================
 
   if (showJoinBattle) {
 
     return (
       <JoinBattle
 
-        battleCode={urlBattleCode || 'HTP163'}
+        battleCode={
+          urlBattleCode || 'HTP163'
+        }
 
         onBack={() => {
+
           setShowJoinBattle(false)
+
         }}
 
         onJoin={(data) => {
 
-          console.log('Player joined:', data)
+          console.log(
+            '👤 Player joined:',
+            data
+          )
+
 
           setJoinedPlayer(data)
 
+
+          setCompetition(
+            data.battle
+          )
+
+
+          setPlayers(
+            Array.isArray(
+              data.battle?.participants
+            )
+              ? data.battle.participants
+              : []
+          )
+
+
+          // GO TO WAITING ROOM
           setShowJoinBattle(false)
 
           setShowBattleWaiting(true)
@@ -177,9 +505,9 @@ const [showJoinBattle, setShowJoinBattle] = useState(
   }
 
 
-  // ==============================
+  // ==========================================
   // BATTLE WAITING ROOM
-  // ==============================
+  // ==========================================
 
   if (showBattleWaiting) {
 
@@ -187,28 +515,44 @@ const [showJoinBattle, setShowJoinBattle] = useState(
       <BattleWaiting
 
         battleCode={
-          joinedPlayer?.battleCode || 'HTP163'
+          competition?.battle_code ||
+          joinedPlayer?.battleCode ||
+          urlBattleCode ||
+          'HTP163'
         }
 
         playerName={
-          joinedPlayer?.name || 'Player'
+          joinedPlayer?.name ||
+          'Player'
         }
 
+        players={players}
+
+        // FRIEND CANNOT START
         isHost={false}
 
         onBack={() => {
 
           setShowBattleWaiting(false)
 
-          setShowJoinBattle(true)
+
+          if (joinedPlayer) {
+
+            setShowJoinBattle(true)
+
+          } else {
+
+            setShowCompetitionReady(true)
+
+          }
 
         }}
 
         onStart={() => {
 
-          setShowBattleWaiting(false)
-
-          setShowMathsBattle(true)
+          console.log(
+            '⏳ Waiting for host...'
+          )
 
         }}
 
@@ -218,9 +562,9 @@ const [showJoinBattle, setShowJoinBattle] = useState(
   }
 
 
-  // ==============================
+  // ==========================================
   // LEADERBOARD
-  // ==============================
+  // ==========================================
 
   if (showLeaderboard) {
 
@@ -237,15 +581,13 @@ const [showJoinBattle, setShowJoinBattle] = useState(
   }
 
 
-  // ==============================
-  // MAIN COMPETE SCREEN
-  // ==============================
+  // ==========================================
+  // MAIN SCREEN
+  // ==========================================
 
   return (
 
     <div className="screen5">
-
-      {/* BACK BUTTON */}
 
       <button
         className="screen5-back"
@@ -256,11 +598,6 @@ const [showJoinBattle, setShowJoinBattle] = useState(
 
 
       <div className="screen5-content">
-
-
-        {/* ==============================
-            HEADER
-        ============================== */}
 
         <div className="compete-icon">
           🏆
@@ -282,16 +619,10 @@ const [showJoinBattle, setShowJoinBattle] = useState(
         </p>
 
 
-        {/* ==============================
-            COMPETITION CARDS
-        ============================== */}
-
         <div className="competition-cards">
 
 
-          {/* =========================
-              QUICK BATTLE
-          ========================= */}
+          {/* QUICK BATTLE */}
 
           <div className="competition-card">
 
@@ -299,21 +630,20 @@ const [showJoinBattle, setShowJoinBattle] = useState(
               🥊
             </div>
 
-
             <h2>
               Quick Battle
             </h2>
-
 
             <p>
               Jump into a quick Maths battle
               and test your skills.
             </p>
 
-
             <button
               className="competition-button"
-              onClick={() => setShowQuickBattle(true)}
+              onClick={() => {
+                setShowQuickBattle(true)
+              }}
             >
               START BATTLE →
             </button>
@@ -321,9 +651,7 @@ const [showJoinBattle, setShowJoinBattle] = useState(
           </div>
 
 
-          {/* =========================
-              CREATE COMPETITION
-          ========================= */}
+          {/* CREATE */}
 
           <div className="competition-card">
 
@@ -331,21 +659,20 @@ const [showJoinBattle, setShowJoinBattle] = useState(
               👥
             </div>
 
-
             <h2>
               Create Competition
             </h2>
-
 
             <p>
               Set up your own Maths competition
               for students or teams.
             </p>
 
-
             <button
               className="competition-button"
-              onClick={() => setShowCreateCompetition(true)}
+              onClick={() => {
+                setShowCreateCompetition(true)
+              }}
             >
               CREATE →
             </button>
@@ -353,9 +680,7 @@ const [showJoinBattle, setShowJoinBattle] = useState(
           </div>
 
 
-          {/* =========================
-              JOIN FRIEND BATTLE
-          ========================= */}
+          {/* JOIN */}
 
           <div className="competition-card">
 
@@ -363,21 +688,20 @@ const [showJoinBattle, setShowJoinBattle] = useState(
               🔗
             </div>
 
-
             <h2>
               Join Friend Battle
             </h2>
-
 
             <p>
               Join your friend's Maths Battle
               using a battle code or link.
             </p>
 
-
             <button
               className="competition-button"
-              onClick={() => setShowJoinBattle(true)}
+              onClick={() => {
+                setShowJoinBattle(true)
+              }}
             >
               JOIN →
             </button>
@@ -385,9 +709,7 @@ const [showJoinBattle, setShowJoinBattle] = useState(
           </div>
 
 
-          {/* =========================
-              LEADERBOARD
-          ========================= */}
+          {/* LEADERBOARD */}
 
           <div className="competition-card">
 
@@ -395,41 +717,34 @@ const [showJoinBattle, setShowJoinBattle] = useState(
               🏅
             </div>
 
-
             <h2>
               Leaderboard
             </h2>
-
 
             <p>
               See scores, rankings and
               celebrate the winners.
             </p>
 
-
             <button
               className="competition-button"
-              onClick={() => setShowLeaderboard(true)}
+              onClick={() => {
+                setShowLeaderboard(true)
+              }}
             >
               VIEW →
             </button>
 
           </div>
 
-
         </div>
 
-
-        {/* ==============================
-            BATTLE NOTE
-        ============================== */}
 
         <div className="battle-note">
 
           <span>
             ⚡
           </span>
-
 
           <p>
             Think fast. Solve smart. Become the
@@ -438,7 +753,6 @@ const [showJoinBattle, setShowJoinBattle] = useState(
 
         </div>
 
-
       </div>
 
     </div>
@@ -446,6 +760,5 @@ const [showJoinBattle, setShowJoinBattle] = useState(
   )
 
 }
-
 
 export default Screen5

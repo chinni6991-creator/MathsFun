@@ -9,6 +9,26 @@ function BattleWaiting({
   onStart
 }) {
 
+  // Safely get a player's name whether the
+  // participant is an object or a string.
+  const getPlayerName = (player) => {
+    if (typeof player === 'string') {
+      return player
+    }
+
+    if (player && typeof player === 'object') {
+      return player.name || 'Player'
+    }
+
+    return 'Player'
+  }
+
+  // Screen5 currently sends the complete participants
+  // array from Supabase.
+  const allPlayers = Array.isArray(players)
+    ? players
+    : []
+
   return (
     <div className="battle-waiting">
 
@@ -37,6 +57,8 @@ function BattleWaiting({
           Get your friends ready! The battle is about to begin 🔥
         </p>
 
+        {/* BATTLE CODE */}
+
         <div className="waiting-code-card">
 
           <span>
@@ -44,6 +66,7 @@ function BattleWaiting({
           </span>
 
           <div>
+
             <small>
               BATTLE CODE
             </small>
@@ -51,9 +74,13 @@ function BattleWaiting({
             <strong>
               {battleCode || '------'}
             </strong>
+
           </div>
 
         </div>
+
+
+        {/* PLAYERS */}
 
         <div className="players-card">
 
@@ -64,67 +91,71 @@ function BattleWaiting({
             </h2>
 
             <span>
-              {players.length + 1}
+              {allPlayers.length}
             </span>
 
           </div>
 
-          <div className="player-row host-player">
 
-            <div className="player-avatar">
-              👑
-            </div>
+          {allPlayers.length > 0 ? (
 
-            <div className="player-details">
+            allPlayers.map((player, index) => {
 
-              <strong>
-                {playerName || 'Host'}
-              </strong>
+              const name = getPlayerName(player)
 
-              <small>
-                HOST
-              </small>
+              // First participant is treated as host.
+              const playerIsHost = index === 0
 
-            </div>
+              return (
 
-            <div className="ready-status">
-              ✓ READY
-            </div>
+                <div
+                  className={
+                    playerIsHost
+                      ? 'player-row host-player'
+                      : 'player-row'
+                  }
+                  key={`${name}-${index}`}
+                >
 
-          </div>
+                  <div className="player-avatar">
 
-          {players.map((player, index) => (
+                    {playerIsHost
+                      ? '👑'
+                      : '👤'}
 
-            <div
-              className="player-row"
-              key={index}
-            >
+                  </div>
 
-              <div className="player-avatar">
-                👤
-              </div>
 
-              <div className="player-details">
+                  <div className="player-details">
 
-                <strong>
-                  {player.name}
-                </strong>
+                    <strong>
+                      {name}
+                    </strong>
 
-                <small>
-                  PLAYER
-                </small>
+                    <small>
+                      {playerIsHost
+                        ? 'HOST'
+                        : 'PLAYER'}
+                    </small>
 
-              </div>
+                  </div>
 
-              <div className="ready-status">
-                ✓ JOINED
-              </div>
 
-            </div>
+                  <div className="ready-status">
 
-          ))}
+                    {playerIsHost
+                      ? '✓ READY'
+                      : '✓ JOINED'}
 
-          {players.length === 0 && (
+                  </div>
+
+                </div>
+
+              )
+
+            })
+
+          ) : (
 
             <div className="waiting-for-friends">
 
@@ -146,6 +177,9 @@ function BattleWaiting({
 
         </div>
 
+
+        {/* INVITE */}
+
         <div className="share-card">
 
           <span>
@@ -166,6 +200,9 @@ function BattleWaiting({
           </div>
 
         </div>
+
+
+        {/* HOST / FRIEND */}
 
         {isHost ? (
 
@@ -191,6 +228,7 @@ function BattleWaiting({
           </div>
 
         )}
+
 
         <p className="waiting-warning">
           ⚡ Make sure everyone has joined before starting!
